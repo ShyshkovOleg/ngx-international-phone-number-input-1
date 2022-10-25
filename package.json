@@ -16,7 +16,19 @@
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook"
   },
-  "private": true,
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShyshkovOleg/ngx-international-phone-number-input"
+  },
+  "author": {
+    "name": "Oleg Shyshkov",
+    "email": "shyshkov.o.a@gmail.com"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
   "dependencies": {
     "@angular/animations": "^14.2.0",
     "@angular/common": "^14.2.0",
