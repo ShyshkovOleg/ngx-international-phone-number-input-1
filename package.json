@@ -6,7 +6,15 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lib:pack": "rimraf dist && npm run lib:version-patch && ng build ngx-international-phone-number-input && cd dist/ngx-international-phone-number-input && npm pack",
+    "lib:publish": "ng build ngx-international-phone-number-input --prod && cd dist/ngx-international-phone-number-input && npm pack && npm publish",
+    "lib:build": "ng build ngx-international-phone-number-input",
+    "lib:watch": "ng build ngx-international-phone-number-input --watch",
+    "lib:version-patch": "cd projects/ngx-international-phone-number-input && npm version patch",
+    "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
+    "storybook": "npm run docs:json && start-storybook -p 6006",
+    "build-storybook": "npm run docs:json && build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -18,20 +26,35 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "google-libphonenumber": "^3.2.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^14.2.6",
     "@angular/cli": "~14.2.6",
     "@angular/compiler-cli": "^14.2.0",
+    "@babel/core": "^7.19.6",
+    "@compodoc/compodoc": "^1.1.19",
+    "@storybook/addon-actions": "^6.5.13",
+    "@storybook/addon-essentials": "^6.5.13",
+    "@storybook/addon-interactions": "^6.5.13",
+    "@storybook/addon-links": "^6.5.13",
+    "@storybook/angular": "^6.5.13",
+    "@storybook/builder-webpack5": "^6.5.13",
+    "@storybook/manager-webpack5": "^6.5.13",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/google-libphonenumber": "^7.4.23",
     "@types/jasmine": "~4.0.0",
+    "babel-loader": "^8.2.5",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "ng-packagr": "^14.2.0",
     "typescript": "~4.7.2"
   }
 }
