@@ -61,22 +61,29 @@ const VALIDATOR = {
       <label id='dial-code' *ngIf=dialCode>+{{dialCode}}</label>
 
       <!-- domestic, required, uses masking directive -->
-      <input *ngIf="required && !isForeign()" phone required name="primaryPhoneInput" id="primaryPhoneInput" placeholder='{{placeholder}}'
-      aria-label='phone number' #phoneNumberInput type="text" (ngModelChange)=updatePhoneNumber($event)
-      (blur)=blur()/>
+      <input
+        *ngIf="required && !isForeign()"
+        phone required
+        name="primaryPhoneInput"
+        id="primaryPhoneInput"
+        placeholder='{{placeholder}}'
+        aria-label='phone number' #phoneNumberInput type="text" (ngModelChange)=updatePhoneNumber($event)
+        (blur)=blur()
+        [disabled]="disabled"
+      />
       <!-- Foreign, required, since foreign countries can have different length phones, potentially from 5 to 12 digits, remove the masking and enforce a max of 12 numeric digits. Rely on google-libphonenumber for validation. -->
       <input *ngIf="required && isForeign()" phone required name="primaryPhoneInput" id="primaryPhoneInput" placeholder='{{placeholder}}'
       maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]="phoneNumberOnly" aria-label='phone number' #phoneNumberInput type="text" (ngModelChange)=updatePhoneNumber($event)
-      (blur)=blur()/>
+      (blur)=blur() [disabled]="disabled"/>
 
       <!-- domestic, not required -->
       <input *ngIf="!required && !isForeign()" phone name="primaryPhoneInput" id="primaryPhoneInput" placeholder='{{placeholder}}'
       aria-label='phone number' #phoneNumberInput type="text" (ngModelChange)=updatePhoneNumber($event)
-      (blur)=blur()/>
+      (blur)=blur() [disabled]="disabled"/>
       <!-- foreign, not required -->
       <input *ngIf="!required && isForeign()" phone name="primaryPhoneInput" id="primaryPhoneInput" placeholder='{{placeholder}}'
       maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]="phoneNumberOnly" aria-label='phone number' #phoneNumberInput type="text" (ngModelChange)=updatePhoneNumber($event)
-      (blur)=blur()/>
+      (blur)=blur() [disabled]="disabled"/>
     </div>
   `,
   styleUrls: ['./ngx-international-phone-number-input.component.scss'],
@@ -107,6 +114,7 @@ export class NgxInternationalPhoneNumberInputComponent implements OnInit, Contro
 
     // Set true if you want the model touched upon any change, rather than just when valid or blurred.
     @Input() autoTouch: boolean = false;
+    @Input() disabled!: boolean;
     @Output() onCountryCodeChanged: EventEmitter<any> = new EventEmitter();
 
     // ELEMENT REF
@@ -199,7 +207,7 @@ export class NgxInternationalPhoneNumberInputComponent implements OnInit, Contro
      * Opens the country selection dropdown
      */
     displayDropDown() {
-        if (this.allowDropdown) {
+        if (this.allowDropdown && !this.disabled) {
             this.showDropdown = !this.showDropdown;
             this.countryFilter = '';
         }
