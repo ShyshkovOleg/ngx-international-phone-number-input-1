@@ -7,7 +7,7 @@ import {
   OnInit,
   Output,
   EventEmitter,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -61,27 +61,30 @@ const VALIDATOR = {
       <label id='dial-code' *ngIf=dialCode>+{{dialCode}}</label>
 
       <!-- domestic, required, uses masking directive -->
-      <input
-        *ngIf="required && !isForeign()"
-        phone required
+      <!-- <input
+        *ngIf="required"
+        required
         name="primaryPhoneInput"
         id="primaryPhoneInput"
         placeholder='{{placeholder}}'
-        aria-label='phone number' #phoneNumberInput type="text" (ngModelChange)=updatePhoneNumber($event)
+        aria-label='phone number'
+        #phoneNumberInput
+        type="text"
+        (ngModelChange)=updatePhoneNumber($event)
         (blur)=blur()
         [disabled]="disabled"
-      />
+      /> -->
       <!-- Foreign, required, since foreign countries can have different length phones, potentially from 5 to 12 digits, remove the masking and enforce a max of 12 numeric digits. Rely on google-libphonenumber for validation. -->
-      <input *ngIf="required && isForeign()" phone required name="primaryPhoneInput" id="primaryPhoneInput" placeholder='{{placeholder}}'
+      <input *ngIf="required" required name="primaryPhoneInput" id="primaryPhoneInput" placeholder='{{placeholder}}'
       maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]="phoneNumberOnly" aria-label='phone number' #phoneNumberInput type="text" (ngModelChange)=updatePhoneNumber($event)
       (blur)=blur() [disabled]="disabled"/>
 
       <!-- domestic, not required -->
-      <input *ngIf="!required && !isForeign()" phone name="primaryPhoneInput" id="primaryPhoneInput" placeholder='{{placeholder}}'
+      <!-- <input *ngIf="!required" name="primaryPhoneInput" id="primaryPhoneInput" placeholder='{{placeholder}}'
       aria-label='phone number' #phoneNumberInput type="text" (ngModelChange)=updatePhoneNumber($event)
-      (blur)=blur() [disabled]="disabled"/>
+      (blur)=blur() [disabled]="disabled"/> -->
       <!-- foreign, not required -->
-      <input *ngIf="!required && isForeign()" phone name="primaryPhoneInput" id="primaryPhoneInput" placeholder='{{placeholder}}'
+      <input *ngIf="!required" name="primaryPhoneInput" id="primaryPhoneInput" placeholder='{{placeholder}}'
       maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]="phoneNumberOnly" aria-label='phone number' #phoneNumberInput type="text" (ngModelChange)=updatePhoneNumber($event)
       (blur)=blur() [disabled]="disabled"/>
     </div>
@@ -97,7 +100,7 @@ export class NgxInternationalPhoneNumberInputComponent implements OnInit, Contro
     @Input() placeholder = 'Enter phone number'; // default
     @Input() maxlength = 12; // default
 
-    @Input() defaultCountry!: string;
+    @Input() defaultCountry: string = 'us';
     @Input() required: boolean = false;
     @Input() allowDropdown = true;
     @Input() type = 'text';
@@ -136,7 +139,7 @@ export class NgxInternationalPhoneNumberInputComponent implements OnInit, Contro
     value = '';
 
     // the country's dial code displayed as read-only
-    dialCode!: string | null;
+    dialCode!: string | null | undefined;
 
     @ViewChild('phoneNumberInput') phoneNumberInput!: ElementRef;
 
@@ -145,7 +148,10 @@ export class NgxInternationalPhoneNumberInputComponent implements OnInit, Contro
      * @param text
      */
     private static startsWithPlus(text: string): boolean {
-        return text.startsWith(PLUS);
+        if(text && text !== '') {
+          return text.startsWith(PLUS);
+        }
+        return false;
     }
 
     /**
@@ -200,6 +206,9 @@ export class NgxInternationalPhoneNumberInputComponent implements OnInit, Contro
         this.countries = this.countries.filter(item => item !== temp);
         if(temp) {
           this.countries.unshift(temp);
+           //  MY
+          this.selectedCountry =  temp;
+          this.dialCode = temp.dialCode;
         }
     }
 
@@ -321,7 +330,6 @@ export class NgxInternationalPhoneNumberInputComponent implements OnInit, Contro
     writeValue(value: string) {
         this.value = value || '';
         this.phoneNumber = this.value;
-
         if (NgxInternationalPhoneNumberInputComponent.startsWithPlus(this.value)) {
             this.findPrefix(this.value.split(PLUS)[1]);
             if (this.selectedCountry) {
@@ -383,8 +391,8 @@ export class NgxInternationalPhoneNumberInputComponent implements OnInit, Contro
             const phoneUtil = glibphone.PhoneNumberUtil.getInstance();
             try {
                 // add country code to US to test validation, not for model update or display
-                if(this.selectedCountry!.countryCode=='us' && this.noUSCountryCode)
-                    value = '+1 '+this.phoneNumberOnly;
+                // if(this.selectedCountry!.countryCode=='us' && this.noUSCountryCode)
+                //     value = '+1 '+this.phoneNumberOnly;
                 let phoneNumber = phoneUtil.parse(value);
                 let isValidNumber = phoneUtil.isValidNumber(phoneNumber);
                 // touch model if valid, to avoid setting untouched before finishing entering value and potentially impacting parent's error display
@@ -409,16 +417,21 @@ export class NgxInternationalPhoneNumberInputComponent implements OnInit, Contro
         let temp;
         let dialCode;
 
-        if(this.selectedCountry!.countryCode == 'us' && this.noUSCountryCode)
-            dialCode = '';
-        else
-            dialCode = '+'+this.dialCode;
-        if(this.countryCodeSpace)
+        // if(this.selectedCountry!.countryCode == 'us' && this.noUSCountryCode) {
+        //   dialCode = '';
+        // } else {
+          dialCode = '+'+this.dialCode;
+        // }
+
+        if(this.countryCodeSpace) {
             temp = dialCode+' '+this.formattedPhone();
-        else
-            temp = dialCode+this.formattedPhone();
+        } else {
+          temp = dialCode+this.formattedPhone();
+        }
 
         this.onModelChange(temp);
+        console.log('Model Change: ', temp);
+
         if(this.autoTouch)
             this.onTouch();
     }
@@ -426,9 +439,9 @@ export class NgxInternationalPhoneNumberInputComponent implements OnInit, Contro
     formattedPhone(){
         let formatted;
         let temp = this.phoneNumberOnly.replace(/\D/g, "");
-        if(!this.selectedCountry || !this.isForeign())
-            formatted = '(' + temp.substring(0, 3) + ') ' + temp.substring(3, 6) + '-' + temp.substring(6, temp.length);
-        else
+        // if(!this.selectedCountry || !this.isForeign())
+        //     formatted = '(' + temp.substring(0, 3) + ') ' + temp.substring(3, 6) + '-' + temp.substring(6, temp.length);
+        // else
             formatted = temp;
         return formatted;
     }
@@ -444,10 +457,11 @@ export class NgxInternationalPhoneNumberInputComponent implements OnInit, Contro
             (country: Country) => country.countryCode === countryCode
         );
         if (this.selectedCountry) {
-            if(this.selectedCountry.countryCode != 'us' || !this.noUSCountryCode)
+            // if(this.selectedCountry.countryCode != 'us' || !this.noUSCountryCode)
+            // if(this.selectedCountry.countryCode != 'us')
                 this.dialCode = this.selectedCountry.dialCode;
-            else
-                this.dialCode = null;
+            // else
+                // this.dialCode = null;
         }
     }
 

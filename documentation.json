@@ -2599,7 +2599,7 @@
     "components": [
         {
             "name": "NgxInternationalPhoneNumberInputComponent",
-            "id": "component-NgxInternationalPhoneNumberInputComponent-e710fd6d92095d8ccfd29d6d27982a3751ecab30483307c35f52977fb5c12673a86967edf090bdb4d0fdc807ccf1e2379effe6cce9aaf750594e667f16996217",
+            "id": "component-NgxInternationalPhoneNumberInputComponent-26452c21d8c9e2b49cbb17816795edb654d276d0ed0a9ee687c6724a2554db8d37ad1dfef9092b8c2e8482a7f0157b4c4d539c7fe33cd7ba0e2a93f2fc7d560b",
             "file": "projects/ngx-international-phone-number-input/src/lib/ngx-international-phone-number-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2619,7 +2619,7 @@
                 "./ngx-international-phone-number-input.component.scss"
             ],
             "styles": [],
-            "template": "<div class=\"input-group\">\n  <span class=\"input-group-addon flagInput\">\n        <div class=\"dropdown\">\n            <button type=\"button\" class=\"dropbtn btn\" (click)=\"displayDropDown()\">\n              <span [class]=\"'flag flag-' + selectedCountry.countryCode\" *ngIf=\"selectedCountry\"></span>\n              <span class=\"defaultCountry\" *ngIf=\"!selectedCountry\"></span>\n              <span class=\"arrow-down\"></span>\n            </button>\n            <div class=\"dropdown-content\" *ngIf=\"showDropdown\" clickOutside>\n              <div class=\"list-group scrollable-menu\">\n                <a href=\"#\" class=\"list-group-item\" *ngFor=\"let country of countries | country: countryFilter\" (click)=\"updateSelectedCountry($event, country.countryCode)\">\n                            <span [class]=\"'flag flag-' + country.countryCode\"></span>\n                            <span class=\"country-name\">{{ country.name }}  <span\n                              class=\"dial-code\">+ {{ country.dialCode}}</span></span>\n                          </a>\n              </div>\n            </div>\n          </div>\n  </span>\n\n  <label id='dial-code' *ngIf=dialCode>+{{dialCode}}</label>\n\n  <!-- domestic, required, uses masking directive -->\n  <input\n    *ngIf=\"required && !isForeign()\"\n    phone required\n    name=\"primaryPhoneInput\"\n    id=\"primaryPhoneInput\"\n    placeholder='{{placeholder}}'\n    aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n    (blur)=blur()\n    [disabled]=\"disabled\"\n  />\n  <!-- Foreign, required, since foreign countries can have different length phones, potentially from 5 to 12 digits, remove the masking and enforce a max of 12 numeric digits. Rely on google-libphonenumber for validation. -->\n  <input *ngIf=\"required && isForeign()\" phone required name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n  maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]=\"phoneNumberOnly\" aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n  (blur)=blur() [disabled]=\"disabled\"/>\n\n  <!-- domestic, not required -->\n  <input *ngIf=\"!required && !isForeign()\" phone name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n  aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n  (blur)=blur() [disabled]=\"disabled\"/>\n  <!-- foreign, not required -->\n  <input *ngIf=\"!required && isForeign()\" phone name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n  maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]=\"phoneNumberOnly\" aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n  (blur)=blur() [disabled]=\"disabled\"/>\n</div>\n",
+            "template": "<div class=\"input-group\">\n  <span class=\"input-group-addon flagInput\">\n        <div class=\"dropdown\">\n            <button type=\"button\" class=\"dropbtn btn\" (click)=\"displayDropDown()\">\n              <span [class]=\"'flag flag-' + selectedCountry.countryCode\" *ngIf=\"selectedCountry\"></span>\n              <span class=\"defaultCountry\" *ngIf=\"!selectedCountry\"></span>\n              <span class=\"arrow-down\"></span>\n            </button>\n            <div class=\"dropdown-content\" *ngIf=\"showDropdown\" clickOutside>\n              <div class=\"list-group scrollable-menu\">\n                <a href=\"#\" class=\"list-group-item\" *ngFor=\"let country of countries | country: countryFilter\" (click)=\"updateSelectedCountry($event, country.countryCode)\">\n                            <span [class]=\"'flag flag-' + country.countryCode\"></span>\n                            <span class=\"country-name\">{{ country.name }}  <span\n                              class=\"dial-code\">+ {{ country.dialCode}}</span></span>\n                          </a>\n              </div>\n            </div>\n          </div>\n  </span>\n\n  <label id='dial-code' *ngIf=dialCode>+{{dialCode}}</label>\n\n  <!-- domestic, required, uses masking directive -->\n  <!-- <input\n    *ngIf=\"required\"\n    required\n    name=\"primaryPhoneInput\"\n    id=\"primaryPhoneInput\"\n    placeholder='{{placeholder}}'\n    aria-label='phone number'\n    #phoneNumberInput\n    type=\"text\"\n    (ngModelChange)=updatePhoneNumber($event)\n    (blur)=blur()\n    [disabled]=\"disabled\"\n  /> -->\n  <!-- Foreign, required, since foreign countries can have different length phones, potentially from 5 to 12 digits, remove the masking and enforce a max of 12 numeric digits. Rely on google-libphonenumber for validation. -->\n  <input *ngIf=\"required\" required name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n  maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]=\"phoneNumberOnly\" aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n  (blur)=blur() [disabled]=\"disabled\"/>\n\n  <!-- domestic, not required -->\n  <!-- <input *ngIf=\"!required\" name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n  aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n  (blur)=blur() [disabled]=\"disabled\"/> -->\n  <!-- foreign, not required -->\n  <input *ngIf=\"!required\" name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n  maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]=\"phoneNumberOnly\" aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n  (blur)=blur() [disabled]=\"disabled\"/>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -2628,7 +2628,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 102,
+                    "line": 106,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -2636,7 +2636,7 @@
                     "name": "allowedCountries",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 105,
+                    "line": 109,
                     "type": "Country[]",
                     "decorators": []
                 },
@@ -2645,7 +2645,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 116,
+                    "line": 120,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -2654,15 +2654,16 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 111,
+                    "line": 115,
                     "type": "boolean",
                     "decorators": []
                 },
                 {
                     "name": "defaultCountry",
+                    "defaultValue": "'us'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 100,
+                    "line": 104,
                     "type": "string",
                     "decorators": []
                 },
@@ -2670,7 +2671,7 @@
                     "name": "disabled",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 117,
+                    "line": 121,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -2679,7 +2680,7 @@
                     "defaultValue": "12",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 98,
+                    "line": 102,
                     "type": "number",
                     "decorators": []
                 },
@@ -2688,7 +2689,7 @@
                     "defaultValue": "true",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 113,
+                    "line": 117,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -2697,7 +2698,7 @@
                     "defaultValue": "'Enter phone number'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 97,
+                    "line": 101,
                     "type": "string",
                     "decorators": []
                 },
@@ -2706,7 +2707,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 101,
+                    "line": 105,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -2715,21 +2716,12 @@
                     "defaultValue": "'text'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 103,
+                    "line": 107,
                     "type": "string",
                     "decorators": []
                 }
             ],
-            "outputsClass": [
-                {
-                    "name": "onCountryCodeChanged",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 118,
-                    "type": "EventEmitter<any>"
-                }
-            ],
+            "outputsClass": [],
             "propertiesClass": [
                 {
                     "name": "countries",
@@ -2738,7 +2730,7 @@
                     "type": "Country[]",
                     "optional": false,
                     "description": "",
-                    "line": 127
+                    "line": 131
                 },
                 {
                     "name": "countryFilter",
@@ -2747,7 +2739,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 129
+                    "line": 133
                 },
                 {
                     "name": "dialCode",
@@ -2756,7 +2748,7 @@
                     "type": "string | null",
                     "optional": false,
                     "description": "",
-                    "line": 139
+                    "line": 143
                 },
                 {
                     "name": "hasAreaCodeParenthesis",
@@ -2766,7 +2758,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 133
+                    "line": 137
                 },
                 {
                     "name": "hasDashes",
@@ -2776,7 +2768,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 134
+                    "line": 138
                 },
                 {
                     "name": "onModelChange",
@@ -2785,7 +2777,7 @@
                     "type": "Function",
                     "optional": false,
                     "description": "",
-                    "line": 125
+                    "line": 129
                 },
                 {
                     "name": "onTouch",
@@ -2794,7 +2786,7 @@
                     "type": "Function",
                     "optional": false,
                     "description": "",
-                    "line": 124
+                    "line": 128
                 },
                 {
                     "name": "phoneComponent",
@@ -2803,7 +2795,7 @@
                     "type": "ElementRef",
                     "optional": false,
                     "description": "",
-                    "line": 121
+                    "line": 125
                 },
                 {
                     "name": "phoneNumber",
@@ -2813,7 +2805,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 131
+                    "line": 135
                 },
                 {
                     "name": "phoneNumberInput",
@@ -2822,7 +2814,7 @@
                     "type": "ElementRef",
                     "optional": false,
                     "description": "",
-                    "line": 141,
+                    "line": 145,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -2838,7 +2830,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 132
+                    "line": 136
                 },
                 {
                     "name": "selectedCountry",
@@ -2847,7 +2839,7 @@
                     "type": "Country | null | undefined",
                     "optional": false,
                     "description": "",
-                    "line": 128
+                    "line": 132
                 },
                 {
                     "name": "showDropdown",
@@ -2857,7 +2849,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 130
+                    "line": 134
                 },
                 {
                     "name": "value",
@@ -2867,7 +2859,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 136
+                    "line": 140
                 }
             ],
             "methodsClass": [
@@ -2877,7 +2869,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 313,
+                    "line": 323,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nTouch the model for validation when input is blurred. This allows for validation errors only after\nuser has entered a value and left the element, rather than as soon as typing begins\n",
@@ -2889,7 +2881,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 209,
+                    "line": 219,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nOpens the country selection dropdown\n",
@@ -2908,7 +2900,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 268,
+                    "line": 278,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\n",
@@ -2919,8 +2911,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 9583,
-                                "end": 9589,
+                                "pos": 9785,
+                                "end": 9791,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -2931,8 +2923,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 9577,
-                                "end": 9582,
+                                "pos": 9779,
+                                "end": 9784,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -2949,7 +2941,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 426,
+                    "line": 440,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2959,7 +2951,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 339,
+                    "line": 348,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2976,7 +2968,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 259,
+                    "line": 269,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nshows the dropdown with keyboard event\n",
@@ -2990,8 +2982,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 9328,
-                                "end": 9333,
+                                "pos": 9530,
+                                "end": 9535,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3002,8 +2994,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 9322,
-                                "end": 9327,
+                                "pos": 9524,
+                                "end": 9529,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3027,7 +3019,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 220,
+                    "line": 230,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nHides the country selection dropdown\n",
@@ -3035,8 +3027,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 8232,
-                                "end": 8237,
+                                "pos": 8431,
+                                "end": 8436,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3047,8 +3039,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 8226,
-                                "end": 8231,
+                                "pos": 8425,
+                                "end": 8430,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3065,7 +3057,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 185,
+                    "line": 192,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReturn true if not US or Canada. Eliminates masking and relies solely on Google-libphonenumber for validation\n",
@@ -3077,7 +3069,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 169,
+                    "line": 176,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3087,7 +3079,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 287,
+                    "line": 297,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSort countries by name\n",
@@ -3109,7 +3101,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 155,
+                    "line": 162,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nReduced the prefixes\n",
@@ -3121,8 +3113,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 6155,
-                                "end": 6168,
+                                "pos": 6201,
+                                "end": 6214,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3133,8 +3125,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 6149,
-                                "end": 6154,
+                                "pos": 6195,
+                                "end": 6200,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3158,7 +3150,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 305,
+                    "line": 315,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\n\n",
@@ -3166,8 +3158,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10650,
-                                "end": 10652,
+                                "pos": 10852,
+                                "end": 10854,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3178,8 +3170,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 10644,
-                                "end": 10649,
+                                "pos": 10846,
+                                "end": 10851,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3203,7 +3195,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 297,
+                    "line": 307,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\n\n",
@@ -3211,8 +3203,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 10538,
-                                "end": 10540,
+                                "pos": 10740,
+                                "end": 10742,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3223,8 +3215,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 10532,
-                                "end": 10537,
+                                "pos": 10734,
+                                "end": 10739,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3241,7 +3233,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 192,
+                    "line": 199,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nMoves default country to top of the list to avoid having to scroll\n",
@@ -3260,7 +3252,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 147,
+                    "line": 151,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nUtil function to check if given text starts with plus sign\n",
@@ -3272,8 +3264,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 5988,
-                                "end": 5992,
+                                "pos": 5966,
+                                "end": 5970,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3284,8 +3276,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 5982,
-                                "end": 5987,
+                                "pos": 5960,
+                                "end": 5965,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3309,7 +3301,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 440,
+                    "line": 454,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nUpdates the country dial code\n",
@@ -3320,8 +3312,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 15387,
-                                "end": 15398,
+                                "pos": 15688,
+                                "end": 15699,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3332,8 +3324,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 15381,
-                                "end": 15386,
+                                "pos": 15682,
+                                "end": 15687,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3357,7 +3349,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 244,
+                    "line": 254,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nUpdates the phone number\n",
@@ -3365,8 +3357,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 8922,
-                                "end": 8927,
+                                "pos": 9124,
+                                "end": 9129,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3377,8 +3369,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 8916,
-                                "end": 8921,
+                                "pos": 9118,
+                                "end": 9123,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3408,7 +3400,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 231,
+                    "line": 241,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nSets the selected country code to given country\n",
@@ -3416,8 +3408,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 8485,
-                                "end": 8490,
+                                "pos": 8684,
+                                "end": 8689,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3428,8 +3420,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 8479,
-                                "end": 8484,
+                                "pos": 8678,
+                                "end": 8683,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3440,8 +3432,8 @@
                         },
                         {
                             "name": {
-                                "pos": 8505,
-                                "end": 8516,
+                                "pos": 8704,
+                                "end": 8715,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3452,8 +3444,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 8499,
-                                "end": 8504,
+                                "pos": 8698,
+                                "end": 8703,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3470,7 +3462,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 408,
+                    "line": 417,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nUpdates the value and trigger changes\nUpdates model to '+' + dialCode + phone. US phones are not prefixed.\n",
@@ -3492,7 +3484,7 @@
                     "optional": false,
                     "returnType": "ValidationErrors | null",
                     "typeParameters": [],
-                    "line": 357,
+                    "line": 366,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\nValidation\n",
@@ -3500,8 +3492,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 12384,
-                                "end": 12385,
+                                "pos": 12585,
+                                "end": 12586,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3512,8 +3504,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 12378,
-                                "end": 12383,
+                                "pos": 12579,
+                                "end": 12584,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3537,7 +3529,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 321,
+                    "line": 331,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "rawdescription": "\n\n\n",
@@ -3545,8 +3537,8 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 11023,
-                                "end": 11028,
+                                "pos": 11225,
+                                "end": 11230,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3557,8 +3549,8 @@
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
-                                "pos": 11017,
-                                "end": 11022,
+                                "pos": 11219,
+                                "end": 11224,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3593,15 +3585,15 @@
                     "description": "<p>shows the dropdown with keyboard event</p>\n",
                     "jsdoctags": [
                         {
-                            "pos": 9321,
-                            "end": 9339,
+                            "pos": 9523,
+                            "end": 9541,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 338,
                             "tagName": {
-                                "pos": 9322,
-                                "end": 9327,
+                                "pos": 9524,
+                                "end": 9529,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3610,8 +3602,8 @@
                             },
                             "comment": "",
                             "name": {
-                                "pos": 9328,
-                                "end": 9333,
+                                "pos": 9530,
+                                "end": 9535,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -3622,13 +3614,13 @@
                             "isBracketed": false
                         }
                     ],
-                    "line": 259
+                    "line": 269
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  ElementRef,\n  forwardRef,\n  HostListener,\n  Input,\n  OnInit,\n  Output,\n  EventEmitter,\n  ViewChild\n} from '@angular/core';\nimport {\n  ControlValueAccessor,\n  FormControl,\n  Validator,\n  ValidationErrors,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR\n} from '@angular/forms';\nimport * as glibphone from 'google-libphonenumber';\nimport { Country } from './country.model';\nimport { CountryService } from './country.service';\n\nconst PLUS = '+';\n\nconst COUNTER_CONTROL_ACCESSOR = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => NgxInternationalPhoneNumberInputComponent),\n  multi: true\n};\n\nconst VALIDATOR = {\n  provide: NG_VALIDATORS,\n  useExisting: forwardRef(() => NgxInternationalPhoneNumberInputComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'international-phone-number-input',\n  template: `\n    <div class=\"input-group\">\n      <span class=\"input-group-addon flagInput\">\n            <div class=\"dropdown\">\n                <button type=\"button\" class=\"dropbtn btn\" (click)=\"displayDropDown()\">\n                  <span [class]=\"'flag flag-' + selectedCountry.countryCode\" *ngIf=\"selectedCountry\"></span>\n                  <span class=\"defaultCountry\" *ngIf=\"!selectedCountry\"></span>\n                  <span class=\"arrow-down\"></span>\n                </button>\n                <div class=\"dropdown-content\" *ngIf=\"showDropdown\" clickOutside>\n                  <div class=\"list-group scrollable-menu\">\n                    <a href=\"#\" class=\"list-group-item\" *ngFor=\"let country of countries | country: countryFilter\" (click)=\"updateSelectedCountry($event, country.countryCode)\">\n                                <span [class]=\"'flag flag-' + country.countryCode\"></span>\n                                <span class=\"country-name\">{{ country.name }}  <span\n                                  class=\"dial-code\">+ {{ country.dialCode}}</span></span>\n                              </a>\n                  </div>\n                </div>\n              </div>\n      </span>\n\n      <label id='dial-code' *ngIf=dialCode>+{{dialCode}}</label>\n\n      <!-- domestic, required, uses masking directive -->\n      <input\n        *ngIf=\"required && !isForeign()\"\n        phone required\n        name=\"primaryPhoneInput\"\n        id=\"primaryPhoneInput\"\n        placeholder='{{placeholder}}'\n        aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n        (blur)=blur()\n        [disabled]=\"disabled\"\n      />\n      <!-- Foreign, required, since foreign countries can have different length phones, potentially from 5 to 12 digits, remove the masking and enforce a max of 12 numeric digits. Rely on google-libphonenumber for validation. -->\n      <input *ngIf=\"required && isForeign()\" phone required name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n      maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]=\"phoneNumberOnly\" aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n      (blur)=blur() [disabled]=\"disabled\"/>\n\n      <!-- domestic, not required -->\n      <input *ngIf=\"!required && !isForeign()\" phone name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n      aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n      (blur)=blur() [disabled]=\"disabled\"/>\n      <!-- foreign, not required -->\n      <input *ngIf=\"!required && isForeign()\" phone name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n      maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]=\"phoneNumberOnly\" aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n      (blur)=blur() [disabled]=\"disabled\"/>\n    </div>\n  `,\n  styleUrls: ['./ngx-international-phone-number-input.component.scss'],\n  host: {\n    '(document:click)': 'hideDropdown($event)'\n  },\n  providers: [COUNTER_CONTROL_ACCESSOR, VALIDATOR]\n})\nexport class NgxInternationalPhoneNumberInputComponent implements OnInit, ControlValueAccessor, Validator {\n    // input\n    @Input() placeholder = 'Enter phone number'; // default\n    @Input() maxlength = 12; // default\n\n    @Input() defaultCountry!: string;\n    @Input() required: boolean = false;\n    @Input() allowDropdown = true;\n    @Input() type = 'text';\n\n    @Input() allowedCountries!: Country[];\n\n    // only doing masking for US and Canadian numbers. Other countries can have different patterns, Finland even allows numbers from 5 to 12 digits. Rely on Google-libphonenumber\n    // masking = [/\\d/, /\\d/, /\\d/, '-', /\\d/, /\\d/, /\\d/, '-', /\\d/, /\\d/, /\\d/, /\\d/];\n\n    // optionally format output model with a space between country code and phone number\n    @Input() countryCodeSpace: boolean = true;\n    // optionally suppress the +1 for US phones\n    @Input() noUSCountryCode: boolean = true;\n\n    // Set true if you want the model touched upon any change, rather than just when valid or blurred.\n    @Input() autoTouch: boolean = false;\n    @Input() disabled!: boolean;\n    @Output() onCountryCodeChanged: EventEmitter<any> = new EventEmitter();\n\n    // ELEMENT REF\n    phoneComponent: ElementRef;\n\n    // CONTROL VALUE ACCESSOR FUNCTIONS\n    onTouch!: Function;\n    onModelChange!: Function;\n\n    countries!: Country[];\n    selectedCountry!: Country | null | undefined;\n    countryFilter!: string;\n    showDropdown = false;\n    phoneNumber = '';\n    phoneNumberOnly = ''; //separating the phone from the country dial code\n    hasAreaCodeParenthesis = false; // try to format output as before\n    hasDashes = false; // try to format output as before\n\n    value = '';\n\n    // the country's dial code displayed as read-only\n    dialCode!: string | null;\n\n    @ViewChild('phoneNumberInput') phoneNumberInput!: ElementRef;\n\n    /**\n     * Util function to check if given text starts with plus sign\n     * @param text\n     */\n    private static startsWithPlus(text: string): boolean {\n        return text.startsWith(PLUS);\n    }\n\n    /**\n     * Reduced the prefixes\n     * @param foundPrefixes\n     */\n    private static reducePrefixes(foundPrefixes: Country[]) {\n        const reducedPrefixes = foundPrefixes.reduce((first: Country, second: Country) =>\n            first.dialCode.length > second.dialCode.length ? first : second\n        );\n        return reducedPrefixes;\n    }\n\n    constructor(\n        private countryService: CountryService,\n        phoneComponent: ElementRef\n    ) {\n        this.phoneComponent = phoneComponent;\n    }\n\n    ngOnInit(): void {\n        if (this.allowedCountries && this.allowedCountries.length) {\n            this.countries = this.countryService.getCountriesByISO(this.allowedCountries);\n        } else {\n            this.countries = this.countryService.getCountries();\n        }\n        this.orderCountriesByName();\n        if(this.defaultCountry)\n            this.setDefault();\n        if(!this.selectedCountry)\n            this.findPrefix(this.defaultCountry);\n    }\n\n    /**\n     * Return true if not US or Canada. Eliminates masking and relies solely on Google-libphonenumber for validation\n     */\n    isForeign(){\n        return this.selectedCountry && this.selectedCountry.countryCode!='us' && this.selectedCountry.countryCode!='ca';\n    }\n\n    /**\n     * Moves default country to top of the list to avoid having to scroll\n     */\n    setDefault(){\n        let temp: Country | undefined;\n        this.countries.forEach((country) =>{\n            if(country.countryCode == this.defaultCountry){\n                temp = country;\n            }\n        });\n        // a puzzling yet pleasant side-effect of this change is Canadian numbers with +1 now showing as Canadian and not US\n        this.countries = this.countries.filter(item => item !== temp);\n        if(temp) {\n          this.countries.unshift(temp);\n        }\n    }\n\n    /**\n     * Opens the country selection dropdown\n     */\n    displayDropDown() {\n        if (this.allowDropdown) {\n            this.showDropdown = !this.showDropdown;\n            this.countryFilter = '';\n        }\n    }\n\n    /**\n     * Hides the country selection dropdown\n     * @param event\n     */\n    hideDropdown(event: Event) {\n        if (!this.phoneComponent.nativeElement.contains(event.target)) {\n            this.showDropdown = false;\n        }\n    }\n\n    /**\n     * Sets the selected country code to given country\n     * @param event\n     * @param countryCode\n     */\n    updateSelectedCountry(event: Event, countryCode: string) {\n        event.preventDefault();\n        this.updatePhoneInput(countryCode);\n        this.onCountryCodeChanged.emit(countryCode);\n        this.updateValue();\n        // focus on phone number input field\n        setTimeout(() => this.phoneNumberInput.nativeElement.focus());\n    }\n\n    /**\n     * Updates the phone number\n     * @param event\n     */\n    updatePhoneNumber(event: Event) {\n        if (NgxInternationalPhoneNumberInputComponent.startsWithPlus((''+event))) {\n            this.findPrefix((''+event).split(PLUS)[1]);\n        } else {\n            // this.selectedCountry = null; // why were they setting this to null?\n        }\n\n        this.updateValue();\n    }\n\n    /**\n     * shows the dropdown with keyboard event\n     * @param event\n     */\n    @HostListener('document:keypress', ['$event'])\n    handleKeyboardEvent(event: KeyboardEvent) {\n        if (this.showDropdown) {\n            this.countryFilter = `${this.countryFilter}${event.key}`;\n        }\n    }\n\n    /**\n     * @param prefix\n     */\n    private findPrefix(prefix: string) {\n        let foundPrefixes: Country[] = this.countries.filter((country: Country) =>\n            prefix.startsWith(country.dialCode)\n        );\n        if (foundPrefixes && foundPrefixes.length) {\n            this.selectedCountry = NgxInternationalPhoneNumberInputComponent.reducePrefixes(foundPrefixes);\n        } else {\n            this.selectedCountry = null;\n        }\n        var defaultCountryUS = {name: \"United States\", dialCode: \"1\", countryCode: \"us\"};\n        if(this.selectedCountry)\n            this.dialCode = this.selectedCountry.dialCode;\n        else\n            this.selectedCountry = defaultCountryUS;\n    }\n\n    /**\n     * Sort countries by name\n     */\n    private orderCountriesByName() {\n        this.countries = this.countries.sort(function (a, b) {\n            return a['name'] > b['name'] ? 1 : b['name'] > a['name'] ? -1 : 0;\n        });\n    }\n\n    /**\n     *\n     * @param fn\n     */\n    registerOnTouched(fn: Function) {\n        this.onTouch = fn;\n    }\n\n    /**\n     *\n     * @param fn\n     */\n    registerOnChange(fn: Function) {\n        this.onModelChange = fn;\n    }\n\n    /**\n     * Touch the model for validation when input is blurred. This allows for validation errors only after\n     * user has entered a value and left the element, rather than as soon as typing begins\n     */\n    blur(){\n        this.onTouch();\n    }\n\n    /**\n     *\n     * @param value\n     */\n    writeValue(value: string) {\n        this.value = value || '';\n        this.phoneNumber = this.value;\n\n        if (NgxInternationalPhoneNumberInputComponent.startsWithPlus(this.value)) {\n            this.findPrefix(this.value.split(PLUS)[1]);\n            if (this.selectedCountry) {\n                this.updatePhoneInput(this.selectedCountry.countryCode);\n            }\n        }\n\n        if (!this.phoneNumber && this.defaultCountry) {\n            this.updatePhoneInput(this.defaultCountry);\n        }\n        this.getPhoneOnly();\n    }\n\n    // strips country dial code from phone for display\n    getPhoneOnly(){\n        // if country code, read the number after the country code and space\n        if (NgxInternationalPhoneNumberInputComponent.startsWithPlus(this.phoneNumber)){\n            let space = this.phoneNumber.indexOf(' ');\n            this.phoneNumberOnly = this.phoneNumber.substring(space, this.phoneNumber.length);\n            this.phoneNumberOnly = this.phoneNumberOnly.replace(/\\D/g, \"\");\n        }\n        // otherwise read the 10 digit domestic phone\n        else {\n            this.phoneNumberOnly = this.phoneNumber.replace(/\\D/g, \"\");\n            this.phoneNumberOnly = this.phoneNumberOnly.substring(this.phoneNumberOnly.length - 10, this.phoneNumberOnly.length);\n        }\n    }\n\n    /**\n     * Validation\n     * @param c\n     */\n    validate(c: FormControl): ValidationErrors | null {\n        let value = c.value;\n        // let selectedDialCode = this.getSelectedCountryDialCode();\n        var validationError = {\n            phoneEmptyError: {\n                valid: false // maintaining this to be backward compatible with prior versions\n            },\n            required: this.formattedPhone().replace(/\\D/g, \"\").length < 1, // this is a more standard error flag\n            pattern: false\n        };\n\n        // strip out stuff like (,),-\n        let digits;\n        if(value)\n            digits = value.replace(/\\D/g, \"\");\n        if (this.formattedPhone().replace(/\\D/g, \"\").length < 1) {\n            if(this.required){\n                validationError.phoneEmptyError.valid = true;\n                validationError.required = true;\n                return validationError;\n            }\n            return null;\n        }\n\n        if (value) {\n            // validating number using the google's lib phone\n            const phoneUtil = glibphone.PhoneNumberUtil.getInstance();\n            try {\n                // add country code to US to test validation, not for model update or display\n                if(this.selectedCountry!.countryCode=='us' && this.noUSCountryCode)\n                    value = '+1 '+this.phoneNumberOnly;\n                let phoneNumber = phoneUtil.parse(value);\n                let isValidNumber = phoneUtil.isValidNumber(phoneNumber);\n                // touch model if valid, to avoid setting untouched before finishing entering value and potentially impacting parent's error display\n                if(isValidNumber)\n                    this.onTouch();\n                else\n                    validationError.pattern = true;\n                return isValidNumber ? null : validationError;\n            } catch (ex) {\n                validationError.pattern = true;\n                return validationError;\n            }\n        }\n        return null;\n    }\n\n    /**\n     * Updates the value and trigger changes\n     * Updates model to '+' + dialCode + phone. US phones are not prefixed.\n     */\n    private updateValue() {\n        let temp;\n        let dialCode;\n\n        if(this.selectedCountry!.countryCode == 'us' && this.noUSCountryCode)\n            dialCode = '';\n        else\n            dialCode = '+'+this.dialCode;\n        if(this.countryCodeSpace)\n            temp = dialCode+' '+this.formattedPhone();\n        else\n            temp = dialCode+this.formattedPhone();\n\n        this.onModelChange(temp);\n        if(this.autoTouch)\n            this.onTouch();\n    }\n\n    formattedPhone(){\n        let formatted;\n        let temp = this.phoneNumberOnly.replace(/\\D/g, \"\");\n        if(!this.selectedCountry || !this.isForeign())\n            formatted = '(' + temp.substring(0, 3) + ') ' + temp.substring(3, 6) + '-' + temp.substring(6, temp.length);\n        else\n            formatted = temp;\n        return formatted;\n    }\n\n    /**\n     * Updates the country dial code\n     * @param countryCode\n     */\n    private updatePhoneInput(countryCode: string) {\n        this.showDropdown = false;\n\n        this.selectedCountry = this.countries.find(\n            (country: Country) => country.countryCode === countryCode\n        );\n        if (this.selectedCountry) {\n            if(this.selectedCountry.countryCode != 'us' || !this.noUSCountryCode)\n                this.dialCode = this.selectedCountry.dialCode;\n            else\n                this.dialCode = null;\n        }\n    }\n\n    /**\n     * Returns the selected country's dialcode\n     */\n    // public getSelectedCountryDialCode(): string {\n    //     if (this.selectedCountry) { return PLUS + this.selectedCountry.dialCode; };\n    //     return null;\n    // }\n\n}\n",
+            "sourceCode": "import {\n  Component,\n  ElementRef,\n  forwardRef,\n  HostListener,\n  Input,\n  OnInit,\n  Output,\n  EventEmitter,\n  ViewChild,\n  OnChanges\n} from '@angular/core';\nimport {\n  ControlValueAccessor,\n  FormControl,\n  Validator,\n  ValidationErrors,\n  NG_VALIDATORS,\n  NG_VALUE_ACCESSOR\n} from '@angular/forms';\nimport * as glibphone from 'google-libphonenumber';\nimport { Country } from './country.model';\nimport { CountryService } from './country.service';\n\nconst PLUS = '+';\n\nconst COUNTER_CONTROL_ACCESSOR = {\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => NgxInternationalPhoneNumberInputComponent),\n  multi: true\n};\n\nconst VALIDATOR = {\n  provide: NG_VALIDATORS,\n  useExisting: forwardRef(() => NgxInternationalPhoneNumberInputComponent),\n  multi: true\n};\n\n@Component({\n  selector: 'international-phone-number-input',\n  template: `\n    <div class=\"input-group\">\n      <span class=\"input-group-addon flagInput\">\n            <div class=\"dropdown\">\n                <button type=\"button\" class=\"dropbtn btn\" (click)=\"displayDropDown()\">\n                  <span [class]=\"'flag flag-' + selectedCountry.countryCode\" *ngIf=\"selectedCountry\"></span>\n                  <span class=\"defaultCountry\" *ngIf=\"!selectedCountry\"></span>\n                  <span class=\"arrow-down\"></span>\n                </button>\n                <div class=\"dropdown-content\" *ngIf=\"showDropdown\" clickOutside>\n                  <div class=\"list-group scrollable-menu\">\n                    <a href=\"#\" class=\"list-group-item\" *ngFor=\"let country of countries | country: countryFilter\" (click)=\"updateSelectedCountry($event, country.countryCode)\">\n                                <span [class]=\"'flag flag-' + country.countryCode\"></span>\n                                <span class=\"country-name\">{{ country.name }}  <span\n                                  class=\"dial-code\">+ {{ country.dialCode}}</span></span>\n                              </a>\n                  </div>\n                </div>\n              </div>\n      </span>\n\n      <label id='dial-code' *ngIf=dialCode>+{{dialCode}}</label>\n\n      <!-- domestic, required, uses masking directive -->\n      <!-- <input\n        *ngIf=\"required\"\n        required\n        name=\"primaryPhoneInput\"\n        id=\"primaryPhoneInput\"\n        placeholder='{{placeholder}}'\n        aria-label='phone number'\n        #phoneNumberInput\n        type=\"text\"\n        (ngModelChange)=updatePhoneNumber($event)\n        (blur)=blur()\n        [disabled]=\"disabled\"\n      /> -->\n      <!-- Foreign, required, since foreign countries can have different length phones, potentially from 5 to 12 digits, remove the masking and enforce a max of 12 numeric digits. Rely on google-libphonenumber for validation. -->\n      <input *ngIf=\"required\" required name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n      maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]=\"phoneNumberOnly\" aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n      (blur)=blur() [disabled]=\"disabled\"/>\n\n      <!-- domestic, not required -->\n      <!-- <input *ngIf=\"!required\" name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n      aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n      (blur)=blur() [disabled]=\"disabled\"/> -->\n      <!-- foreign, not required -->\n      <input *ngIf=\"!required\" name=\"primaryPhoneInput\" id=\"primaryPhoneInput\" placeholder='{{placeholder}}'\n      maxlength='{{maxlength}}' onkeypress='return event.charCode >= 48 && event.charCode <= 57' [(ngModel)]=\"phoneNumberOnly\" aria-label='phone number' #phoneNumberInput type=\"text\" (ngModelChange)=updatePhoneNumber($event)\n      (blur)=blur() [disabled]=\"disabled\"/>\n    </div>\n  `,\n  styleUrls: ['./ngx-international-phone-number-input.component.scss'],\n  host: {\n    '(document:click)': 'hideDropdown($event)'\n  },\n  providers: [COUNTER_CONTROL_ACCESSOR, VALIDATOR]\n})\nexport class NgxInternationalPhoneNumberInputComponent implements OnInit, ControlValueAccessor, Validator {\n    // input\n    @Input() placeholder = 'Enter phone number'; // default\n    @Input() maxlength = 12; // default\n\n    @Input() defaultCountry: string = 'us';\n    @Input() required: boolean = false;\n    @Input() allowDropdown = true;\n    @Input() type = 'text';\n\n    @Input() allowedCountries!: Country[];\n\n    // only doing masking for US and Canadian numbers. Other countries can have different patterns, Finland even allows numbers from 5 to 12 digits. Rely on Google-libphonenumber\n    // masking = [/\\d/, /\\d/, /\\d/, '-', /\\d/, /\\d/, /\\d/, '-', /\\d/, /\\d/, /\\d/, /\\d/];\n\n    // optionally format output model with a space between country code and phone number\n    @Input() countryCodeSpace: boolean = true;\n    // optionally suppress the +1 for US phones\n    @Input() noUSCountryCode: boolean = true;\n\n    // Set true if you want the model touched upon any change, rather than just when valid or blurred.\n    @Input() autoTouch: boolean = false;\n    @Input() disabled!: boolean;\n    // @Output() onCountryCodeChanged: EventEmitter<any> = new EventEmitter();\n\n    // ELEMENT REF\n    phoneComponent: ElementRef;\n\n    // CONTROL VALUE ACCESSOR FUNCTIONS\n    onTouch!: Function;\n    onModelChange!: Function;\n\n    countries!: Country[];\n    selectedCountry!: Country | null | undefined;\n    countryFilter!: string;\n    showDropdown = false;\n    phoneNumber = '';\n    phoneNumberOnly = ''; //separating the phone from the country dial code\n    hasAreaCodeParenthesis = false; // try to format output as before\n    hasDashes = false; // try to format output as before\n\n    value = '';\n\n    // the country's dial code displayed as read-only\n    dialCode!: string | null;\n\n    @ViewChild('phoneNumberInput') phoneNumberInput!: ElementRef;\n\n    /**\n     * Util function to check if given text starts with plus sign\n     * @param text\n     */\n    private static startsWithPlus(text: string): boolean {\n        if(text && text !== '') {\n          return text.startsWith(PLUS);\n        }\n        return false;\n    }\n\n    /**\n     * Reduced the prefixes\n     * @param foundPrefixes\n     */\n    private static reducePrefixes(foundPrefixes: Country[]) {\n        const reducedPrefixes = foundPrefixes.reduce((first: Country, second: Country) =>\n            first.dialCode.length > second.dialCode.length ? first : second\n        );\n        return reducedPrefixes;\n    }\n\n    constructor(\n        private countryService: CountryService,\n        phoneComponent: ElementRef\n    ) {\n        this.phoneComponent = phoneComponent;\n    }\n\n    ngOnInit(): void {\n        if (this.allowedCountries && this.allowedCountries.length) {\n            this.countries = this.countryService.getCountriesByISO(this.allowedCountries);\n        } else {\n            this.countries = this.countryService.getCountries();\n        }\n        this.orderCountriesByName();\n        if(this.defaultCountry)\n            this.setDefault();\n        if(!this.selectedCountry)\n            this.findPrefix(this.defaultCountry);\n    }\n\n    /**\n     * Return true if not US or Canada. Eliminates masking and relies solely on Google-libphonenumber for validation\n     */\n    isForeign(){\n        return this.selectedCountry && this.selectedCountry.countryCode!='us' && this.selectedCountry.countryCode!='ca';\n    }\n\n    /**\n     * Moves default country to top of the list to avoid having to scroll\n     */\n    setDefault(){\n        let temp: Country | undefined;\n        this.countries.forEach((country) =>{\n            if(country.countryCode == this.defaultCountry){\n                temp = country;\n            }\n        });\n        // a puzzling yet pleasant side-effect of this change is Canadian numbers with +1 now showing as Canadian and not US\n        this.countries = this.countries.filter(item => item !== temp);\n        if(temp) {\n          this.countries.unshift(temp);\n        }\n        //  MY\n        this.selectedCountry =  {name: \"United States\", dialCode: \"1\", countryCode: \"us\"};\n        this.dialCode = \"1\";\n    }\n\n    /**\n     * Opens the country selection dropdown\n     */\n    displayDropDown() {\n        if (this.allowDropdown && !this.disabled) {\n            this.showDropdown = !this.showDropdown;\n            this.countryFilter = '';\n        }\n    }\n\n    /**\n     * Hides the country selection dropdown\n     * @param event\n     */\n    hideDropdown(event: Event) {\n        if (!this.phoneComponent.nativeElement.contains(event.target)) {\n            this.showDropdown = false;\n        }\n    }\n\n    /**\n     * Sets the selected country code to given country\n     * @param event\n     * @param countryCode\n     */\n    updateSelectedCountry(event: Event, countryCode: string) {\n        event.preventDefault();\n        this.updatePhoneInput(countryCode);\n        // this.onCountryCodeChanged.emit(countryCode);\n        this.updateValue();\n        // focus on phone number input field\n        setTimeout(() => this.phoneNumberInput.nativeElement.focus());\n    }\n\n    /**\n     * Updates the phone number\n     * @param event\n     */\n    updatePhoneNumber(event: Event) {\n        if (NgxInternationalPhoneNumberInputComponent.startsWithPlus((''+event))) {\n            this.findPrefix((''+event).split(PLUS)[1]);\n        } else {\n            // this.selectedCountry = null; // why were they setting this to null?\n        }\n\n        this.updateValue();\n    }\n\n    /**\n     * shows the dropdown with keyboard event\n     * @param event\n     */\n    @HostListener('document:keypress', ['$event'])\n    handleKeyboardEvent(event: KeyboardEvent) {\n        if (this.showDropdown) {\n            this.countryFilter = `${this.countryFilter}${event.key}`;\n        }\n    }\n\n    /**\n     * @param prefix\n     */\n    private findPrefix(prefix: string) {\n        let foundPrefixes: Country[] = this.countries.filter((country: Country) =>\n            prefix.startsWith(country.dialCode)\n        );\n        if (foundPrefixes && foundPrefixes.length) {\n            this.selectedCountry = NgxInternationalPhoneNumberInputComponent.reducePrefixes(foundPrefixes);\n        } else {\n            this.selectedCountry = null;\n        }\n        var defaultCountryUS = {name: \"United States\", dialCode: \"1\", countryCode: \"us\"};\n        if(this.selectedCountry)\n            this.dialCode = this.selectedCountry.dialCode;\n        else\n            this.selectedCountry = defaultCountryUS;\n    }\n\n    /**\n     * Sort countries by name\n     */\n    private orderCountriesByName() {\n        this.countries = this.countries.sort(function (a, b) {\n            return a['name'] > b['name'] ? 1 : b['name'] > a['name'] ? -1 : 0;\n        });\n    }\n\n    /**\n     *\n     * @param fn\n     */\n    registerOnTouched(fn: Function) {\n        this.onTouch = fn;\n    }\n\n    /**\n     *\n     * @param fn\n     */\n    registerOnChange(fn: Function) {\n        this.onModelChange = fn;\n    }\n\n    /**\n     * Touch the model for validation when input is blurred. This allows for validation errors only after\n     * user has entered a value and left the element, rather than as soon as typing begins\n     */\n    blur(){\n        this.onTouch();\n    }\n\n    /**\n     *\n     * @param value\n     */\n    writeValue(value: string) {\n        this.value = value || '';\n        this.phoneNumber = this.value;\n        if (NgxInternationalPhoneNumberInputComponent.startsWithPlus(this.value)) {\n            this.findPrefix(this.value.split(PLUS)[1]);\n            if (this.selectedCountry) {\n                this.updatePhoneInput(this.selectedCountry.countryCode);\n            }\n        }\n\n        if (!this.phoneNumber && this.defaultCountry) {\n            this.updatePhoneInput(this.defaultCountry);\n        }\n        this.getPhoneOnly();\n    }\n\n    // strips country dial code from phone for display\n    getPhoneOnly(){\n        // if country code, read the number after the country code and space\n        if (NgxInternationalPhoneNumberInputComponent.startsWithPlus(this.phoneNumber)){\n            let space = this.phoneNumber.indexOf(' ');\n            this.phoneNumberOnly = this.phoneNumber.substring(space, this.phoneNumber.length);\n            this.phoneNumberOnly = this.phoneNumberOnly.replace(/\\D/g, \"\");\n        }\n        // otherwise read the 10 digit domestic phone\n        else {\n            this.phoneNumberOnly = this.phoneNumber.replace(/\\D/g, \"\");\n            this.phoneNumberOnly = this.phoneNumberOnly.substring(this.phoneNumberOnly.length - 10, this.phoneNumberOnly.length);\n        }\n    }\n\n    /**\n     * Validation\n     * @param c\n     */\n    validate(c: FormControl): ValidationErrors | null {\n        let value = c.value;\n        // let selectedDialCode = this.getSelectedCountryDialCode();\n        var validationError = {\n            phoneEmptyError: {\n                valid: false // maintaining this to be backward compatible with prior versions\n            },\n            required: this.formattedPhone().replace(/\\D/g, \"\").length < 1, // this is a more standard error flag\n            pattern: false\n        };\n\n        // strip out stuff like (,),-\n        let digits;\n        if(value)\n            digits = value.replace(/\\D/g, \"\");\n        if (this.formattedPhone().replace(/\\D/g, \"\").length < 1) {\n            if(this.required){\n                validationError.phoneEmptyError.valid = true;\n                validationError.required = true;\n                return validationError;\n            }\n            return null;\n        }\n\n        if (value) {\n            // validating number using the google's lib phone\n            const phoneUtil = glibphone.PhoneNumberUtil.getInstance();\n            try {\n                // add country code to US to test validation, not for model update or display\n                // if(this.selectedCountry!.countryCode=='us' && this.noUSCountryCode)\n                //     value = '+1 '+this.phoneNumberOnly;\n                let phoneNumber = phoneUtil.parse(value);\n                let isValidNumber = phoneUtil.isValidNumber(phoneNumber);\n                // touch model if valid, to avoid setting untouched before finishing entering value and potentially impacting parent's error display\n                if(isValidNumber)\n                    this.onTouch();\n                else\n                    validationError.pattern = true;\n                return isValidNumber ? null : validationError;\n            } catch (ex) {\n                validationError.pattern = true;\n                return validationError;\n            }\n        }\n        return null;\n    }\n\n    /**\n     * Updates the value and trigger changes\n     * Updates model to '+' + dialCode + phone. US phones are not prefixed.\n     */\n    private updateValue() {\n        let temp;\n        let dialCode;\n\n        // if(this.selectedCountry!.countryCode == 'us' && this.noUSCountryCode) {\n        //   dialCode = '';\n        // } else {\n          dialCode = '+'+this.dialCode;\n        // }\n\n        if(this.countryCodeSpace) {\n            temp = dialCode+' '+this.formattedPhone();\n        } else {\n          temp = dialCode+this.formattedPhone();\n        }\n\n        this.onModelChange(temp);\n        console.log('Model Change: ', temp);\n\n        if(this.autoTouch)\n            this.onTouch();\n    }\n\n    formattedPhone(){\n        let formatted;\n        let temp = this.phoneNumberOnly.replace(/\\D/g, \"\");\n        // if(!this.selectedCountry || !this.isForeign())\n        //     formatted = '(' + temp.substring(0, 3) + ') ' + temp.substring(3, 6) + '-' + temp.substring(6, temp.length);\n        // else\n            formatted = temp;\n        return formatted;\n    }\n\n    /**\n     * Updates the country dial code\n     * @param countryCode\n     */\n    private updatePhoneInput(countryCode: string) {\n        this.showDropdown = false;\n\n        this.selectedCountry = this.countries.find(\n            (country: Country) => country.countryCode === countryCode\n        );\n        if (this.selectedCountry) {\n            // if(this.selectedCountry.countryCode != 'us' || !this.noUSCountryCode)\n            // if(this.selectedCountry.countryCode != 'us')\n                this.dialCode = this.selectedCountry.dialCode;\n            // else\n                // this.dialCode = null;\n        }\n    }\n\n    /**\n     * Returns the selected country's dialcode\n     */\n    // public getSelectedCountryDialCode(): string {\n    //     if (this.selectedCountry) { return PLUS + this.selectedCountry.dialCode; };\n    //     return null;\n    // }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -3656,7 +3648,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 160,
+                "line": 167,
                 "jsdoctags": [
                     {
                         "name": "countryService",
@@ -3781,6 +3773,16 @@
                 "defaultValue": "{\n  provide: NG_VALUE_ACCESSOR,\n  useExisting: forwardRef(() => NgxInternationalPhoneNumberInputComponent),\n  multi: true\n}"
             },
             {
+                "name": "formGroup",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "new FormGroup({\n  phone: new FormControl(''),\n})"
+            },
+            {
                 "name": "LOCALES",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -3827,7 +3829,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<NgxInternationalPhoneNumberInputComponent>",
-                "defaultValue": "(args: NgxInternationalPhoneNumberInputComponent) => ({\n\tcomponent: NgxInternationalPhoneNumberInputComponent,\n  props: args,\n})"
+                "defaultValue": "(args: NgxInternationalPhoneNumberInputComponent) => ({\n\tcomponent: NgxInternationalPhoneNumberInputComponent,\n    props: args,\n    form: formGroup\n})"
             },
             {
                 "name": "VALIDATOR",
@@ -3897,19 +3899,17 @@
                     "defaultValue": "{\n  provide: NG_VALIDATORS,\n  useExisting: forwardRef(() => NgxInternationalPhoneNumberInputComponent),\n  multi: true\n}"
                 }
             ],
-            "projects/ngx-international-phone-number-input/src/lib/country.service.ts": [
+            "stories/Input.stories.ts": [
                 {
-                    "name": "LOCALES",
+                    "name": "formGroup",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/ngx-international-phone-number-input/src/lib/country.service.ts",
+                    "file": "stories/Input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  en: {\n    ax: 'AALAND ISLANDS',\n    af: 'AFGHANISTAN',\n    al: 'ALBANIA',\n    dz: 'ALGERIA',\n    as: 'AMERICAN SAMOA',\n    ad: 'ANDORRA',\n    ao: 'ANGOLA',\n    ai: 'ANGUILLA',\n    aq: 'ANTARCTICA',\n    ag: 'ANTIGUA AND BARBUDA',\n    ar: 'ARGENTINA',\n    am: 'ARMENIA',\n    aw: 'ARUBA',\n    au: 'AUSTRALIA',\n    at: 'AUSTRIA',\n    az: 'AZERBAIJAN',\n    bs: 'BAHAMAS',\n    bh: 'BAHRAIN',\n    bd: 'BANGLADESH',\n    bb: 'BARBADOS',\n    by: 'BELARUS',\n    be: 'BELGIUM',\n    bz: 'BELIZE',\n    bj: 'BENIN',\n    bm: 'BERMUDA',\n    bt: 'BHUTAN',\n    bo: 'BOLIVIA',\n    ba: 'BOSNIA AND HERZEGOWINA',\n    bw: 'BOTSWANA',\n    bv: 'BOUVET ISLAND',\n    br: 'BRAZIL',\n    io: 'BRITISH INDIAN OCEAN TERRITORY',\n    bn: 'BRUNEI DARUSSALAM',\n    bg: 'BULGARIA',\n    bf: 'BURKINA FASO',\n    bi: 'BURUNDI',\n    bq: 'CARIBBEAN NETHERLANDS',\n    kh: 'CAMBODIA',\n    cm: 'CAMEROON',\n    ca: 'CANADA',\n    cv: 'CAPE VERDE',\n    ky: 'CAYMAN ISLANDS',\n    cf: 'CENTRAL AFRICAN REPUBLIC',\n    td: 'CHAD',\n    cl: 'CHILE',\n    cn: 'CHINA',\n    cc: 'COCOS ISLANDS',\n    co: 'COLOMBIA',\n    km: 'COMOROS',\n    cd: 'CONGO',\n    cg: 'CONGO REPUBLIC',\n    ck: 'COOK ISLANDS',\n    cr: 'COSTA RICA',\n    ci: 'COTE DIVOIRE',\n    hr: 'CROATIA ',\n    cu: 'CUBA',\n    cw: 'CURACAO',\n    cy: 'CYPRUS',\n    cz: 'CZECH REPUBLIC',\n    dk: 'DENMARK',\n    dj: 'DJIBOUTI',\n    dm: 'DOMINICA',\n    do: 'DOMINICAN REPUBLIC',\n    ec: 'ECUADOR',\n    eg: 'EGYPT',\n    sv: 'EL SALVADOR',\n    gq: 'EQUATORIAL GUINEA',\n    er: 'ERITREA',\n    ee: 'ESTONIA',\n    et: 'ETHIOPIA',\n    fk: 'FALKLAND ISLANDS (MALVINAS)',\n    fo: 'FAROE ISLANDS',\n    fj: 'FIJI',\n    fi: 'FINLAND',\n    fr: 'FRANCE',\n    gf: 'FRENCH GUIANA',\n    pf: 'FRENCH POLYNESIA',\n    tf: 'FRENCH SOUTHERN TERRITORIES',\n    ga: 'GABON',\n    gm: 'GAMBIA',\n    ge: 'GEORGIA',\n    de: 'GERMANY',\n    gh: 'GHANA',\n    gi: 'GIBRALTAR',\n    gr: 'GREECE',\n    gl: 'GREENLAND',\n    gd: 'GRENADA',\n    gp: 'GUADELOUPE',\n    gu: 'GUAM',\n    gt: 'GUATEMALA',\n    gg: 'GUERNSEY',\n    gn: 'GUINEA',\n    gw: 'GUINEA-BISSAU',\n    gy: 'GUYANA',\n    ht: 'HAITI',\n    hm: 'HEARD AND MC DONALD ISLANDS',\n    hn: 'HONDURAS',\n    hk: 'HONG KONG',\n    hu: 'HUNGARY',\n    is: 'ICELAND',\n    in: 'INDIA',\n    id: 'INDONESIA',\n    ir: 'IRAN ',\n    iq: 'IRAQ',\n    ie: 'IRELAND',\n    im: 'ISLA DE MAN',\n    il: 'ISRAEL',\n    it: 'ITALY',\n    jm: 'JAMAICA',\n    jp: 'JAPAN',\n    je: 'JERSEY',\n    jo: 'JORDAN',\n    kz: 'KAZAKHSTAN',\n    ke: 'KENYA',\n    ki: 'KIRIBATI',\n    kp: 'KOREA NORTH ',\n    kr: 'KOREA SOUTH',\n    xk: 'KOSOVO',\n    kw: 'KUWAIT',\n    kg: 'KYRGYZSTAN',\n    la: 'LAO',\n    lv: 'LATVIA',\n    lb: 'LEBANON',\n    ls: 'LESOTHO',\n    lr: 'LIBERIA',\n    ly: 'LIBYAN ARAB JAMAHIRIYA',\n    li: 'LIECHTENSTEIN',\n    lt: 'LITHUANIA',\n    lu: 'LUXEMBOURG',\n    mo: 'MACAU',\n    mk: 'MACEDONIA',\n    mg: 'MADAGASCAR',\n    mw: 'MALAWI',\n    my: 'MALAYSIA',\n    mv: 'MALDIVES',\n    ml: 'MALI',\n    mt: 'MALTA',\n    mh: 'MARSHALL ISLANDS',\n    mq: 'MARTINIQUE',\n    mr: 'MAURITANIA',\n    mu: 'MAURITIUS',\n    yt: 'MAYOTTE',\n    mx: 'MEXICO',\n    fm: 'MICRONESIA',\n    md: 'MOLDOVA',\n    mc: 'MONACO',\n    mn: 'MONGOLIA',\n    me: 'MONTENEGRO',\n    ms: 'MONTSERRAT',\n    ma: 'MOROCCO',\n    mz: 'MOZAMBIQUE',\n    mm: 'MYANMAR',\n    na: 'NAMIBIA',\n    nr: 'NAURU',\n    np: 'NEPAL',\n    nl: 'NETHERLANDS',\n    an: 'NETHERLANDS ANTILLES',\n    nc: 'NEW CALEDONIA',\n    nz: 'NEW ZEALAND',\n    ni: 'NICARAGUA',\n    ne: 'NIGER',\n    ng: 'NIGERIA',\n    nu: 'NIUE',\n    nf: 'NORFOLK ISLAND',\n    mp: 'NORTHERN MARIANA ISLANDS',\n    no: 'NORWAY',\n    om: 'OMAN',\n    pk: 'PAKISTAN',\n    pw: 'PALAU',\n    ps: 'PALESTINA',\n    pa: 'PANAMA',\n    pg: 'PAPUA NEW GUINEA',\n    py: 'PARAGUAY',\n    pe: 'PERU',\n    ph: 'PHILIPPINES',\n    pn: 'PITCAIRN',\n    pl: 'POLAND',\n    pt: 'PORTUGAL',\n    pr: 'PUERTO RICO',\n    qa: 'QATAR',\n    re: 'REUNION',\n    ro: 'ROMANIA',\n    ru: 'RUSSIAN FEDERATION',\n    rw: 'RWANDA',\n    sh: 'SAINT HELENA',\n    kn: 'SAINT KITTS AND NEVIS',\n    lc: 'SAINT LUCIA',\n    pm: 'SAINT PIERRE AND MIQUELON',\n    vc: 'SAINT VINCENT AND THE GRENADINES',\n    ws: 'SAMOA',\n    bl: 'SAN BARTOLOMÉ',\n    sm: 'SAN MARINO',\n    st: 'SAO TOME AND PRINCIPE',\n    sa: 'SAUDI ARABIA',\n    sn: 'SENEGAL',\n    cs: 'SERBIA AND MONTENEGRO',\n    rs: 'SERBIA',\n    sc: 'SEYCHELLES',\n    sl: 'SIERRA LEONE',\n    sg: 'SINGAPORE',\n    sx: 'SINT MAARTEN',\n    sk: 'SLOVAKIA',\n    si: 'SLOVENIA',\n    sb: 'SOLOMON ISLANDS',\n    so: 'SOMALIA',\n    za: 'SOUTH AFRICA',\n    gs: 'SOUTH GEORGIA ISLANDS',\n    es: 'SPAIN',\n    lk: 'SRI LANKA',\n    sd: 'SUDAN',\n    ss: 'SOUTH SUDAN',\n    sr: 'SURINAME',\n    sj: 'SVALBARD AND JAN MAYEN ISLANDS',\n    sz: 'SWAZILAND',\n    se: 'SWEDEN',\n    ch: 'SWITZERLAND',\n    sy: 'SYRIAN ARAB REPUBLIC',\n    tw: 'TAIWAN',\n    tj: 'TAJIKISTAN',\n    tz: 'TANZANIA',\n    th: 'THAILAND',\n    tl: 'TIMOR-LESTE',\n    tg: 'TOGO',\n    tk: 'TOKELAU',\n    to: 'TONGA',\n    tt: 'TRINIDAD AND TOBAGO',\n    tn: 'TUNISIA',\n    tr: 'TURKEY',\n    tm: 'TURKMENISTAN',\n    tc: 'TURKS AND CAICOS ISLANDS',\n    tv: 'TUVALU',\n    ug: 'UGANDA',\n    ua: 'UKRAINE',\n    ae: 'UNITED ARAB EMIRATES',\n    gb: 'UNITED KINGDOM',\n    us: 'UNITED STATES',\n    um: 'UNITED STATES MINOR OUTLYING ISLANDS',\n    uy: 'URUGUAY',\n    uz: 'UZBEKISTAN',\n    vu: 'VANUATU',\n    va: 'VATICAN CITY STATE',\n    ve: 'VENEZUELA',\n    vn: 'VIET NAM',\n    vg: 'VIRGIN ISLANDS (BRITISH)',\n    vi: 'VIRGIN ISLANDS (U.S.)',\n    wf: 'WALLIS AND FUTUNA ISLANDS',\n    eh: 'WESTERN SAHARA',\n    ye: 'YEMEN',\n    zm: 'ZAMBIA',\n    zw: 'ZIMBABWE '\n  },\n  es: {\n    ax: 'ISLAS ÁLAND',\n    af: 'AFGHANISTÁN',\n    al: 'ALBANIA',\n    dz: 'ARGEL',\n    as: 'SAMOA AMERICANA',\n    ad: 'ANDORRA',\n    ao: 'ANGOLA',\n    ai: 'ANGUILA',\n    aq: 'ANTÁRTIDA',\n    ag: 'ANTIGUA Y BARBUDA',\n    ar: 'ARGENTINA',\n    am: 'ARMENIA',\n    aw: 'ARUBA',\n    au: 'AUSTRALIA',\n    at: 'AUSTRIA',\n    az: 'AZERBAIYÁN',\n    bs: 'BAHAMAS',\n    bh: 'BAHRÉIN',\n    bd: 'BANGLADESH',\n    bb: 'BARBADOS',\n    by: 'BELARÚS',\n    be: 'BÉLGICA',\n    bz: 'BELICE',\n    bj: 'BENIN',\n    bm: 'BERMUDAAS',\n    bt: 'BHUTÁN',\n    bo: 'BOLIVIA',\n    ba: 'BOSNIA Y HERZEGOVINA',\n    bw: 'BOTSUANA',\n    bv: 'ISLA BOUVET',\n    br: 'BRASIL',\n    io: 'TERRITORIO BRITÁNICO DEL OCÉANO ÍNDICO',\n    bn: 'BRUNÉI',\n    bg: 'BULGARIA',\n    bf: 'BURKINA FASO',\n    bi: 'BURUNDI',\n    bq: 'CARIBE PAÍSES BAJOS',\n    kh: 'CAMBOYA',\n    cm: 'CAMERÚN',\n    ca: 'CANADÁ',\n    cv: 'CABO VERDE',\n    ky: 'ISLAS CAIMÁN',\n    cf: 'REPÚBLICA CENTRO-AFRICANA',\n    td: 'CHAD',\n    cl: 'CHILE',\n    cn: 'CHINA',\n    cc: 'ISLAS COCOS',\n    co: 'COLOMBIA',\n    km: 'COMOROS',\n    cd: 'CONGO (ZAIRE)',\n    cg: 'CONGO',\n    ck: 'ISLAS COOK',\n    cr: 'COSTA RICA',\n    ci: 'COSTA DE MARFIL',\n    hr: 'CROACIA ',\n    cu: 'CUBA',\n    cw: 'CURAÇAO',\n    cy: 'CHIPRE',\n    cz: 'REPÚBLICA CHECA',\n    dk: 'DINAMARCA',\n    dj: 'YIBUTI',\n    dm: 'DOMÍNICA',\n    do: 'REPÚBLICA DOMINICANA',\n    ec: 'ECUADOR',\n    eg: 'EGIPTO',\n    sv: 'EL SALVADOR',\n    gq: 'GUINEA ECUATORIAL',\n    er: 'ERITREA',\n    ee: 'ESTONIA',\n    et: 'ETIOPÍA',\n    fk: 'ISLAS MALVINAS',\n    fo: 'ISLAS FAROE',\n    fj: 'FIJI',\n    fi: 'FINLANDIA',\n    fr: 'FRANCIA',\n    gf: 'GUIANA FRANCESA',\n    pf: 'POLYNESIA FRANCESA',\n    tf: 'TERRITORIOS AUSTRALES FRANCESES',\n    ga: 'GABÓN',\n    gm: 'GAMBIA',\n    ge: 'GEORGIA',\n    de: 'ALEMANIA',\n    gh: 'GHANA',\n    gi: 'GIBRALTAR',\n    gr: 'GREECE',\n    gl: 'GROENLANDIA',\n    gd: 'GRANADA',\n    gp: 'GUADALUPE',\n    gu: 'GUAM',\n    gt: 'GUATEMALA',\n    gg: 'GUERNSEY',\n    gn: 'GUINEA',\n    gw: 'GUINEA-BISSAU',\n    gy: 'GUYANA',\n    ht: 'HAITI',\n    hm: 'ISLAS HEARD Y MC DONALD',\n    hn: 'HONDURAS',\n    hk: 'HONG KONG',\n    hu: 'HUNGRÍA',\n    is: 'ISLANDIA',\n    in: 'INDIA',\n    id: 'INDONESIA',\n    ir: 'IRÁN',\n    iq: 'IRAK',\n    ie: 'IRLANDA',\n    im: 'ISLA DE MAN',\n    il: 'ISRAEL',\n    it: 'ITALIA',\n    jm: 'JAMAICA',\n    jp: 'JAPÓN',\n    je: 'JERSEY',\n    jo: 'JORDANIA',\n    kz: 'KAZAJSTÁN',\n    ke: 'KENIA',\n    ki: 'KIRIBATI',\n    kp: 'KOREA DEL NORTE',\n    kr: 'KOREA DEL SUR',\n    xk: 'KOSOVO',\n    kw: 'KUWAIT',\n    kg: 'KIRGUISTÁN',\n    la: 'LAOS',\n    lv: 'LETONIA',\n    lb: 'LÍBANO',\n    ls: 'LESOTHO',\n    lr: 'LIBERIA',\n    ly: 'LIBIA',\n    li: 'LIECHTENSTEIN',\n    lt: 'LITUANIA',\n    lu: 'LUXEMBURGO',\n    mo: 'MACAO',\n    mk: 'MACEDONIA',\n    mg: 'MADAGASCAR',\n    mw: 'MALAWI',\n    my: 'MALASIA',\n    mv: 'MALDIVAS',\n    ml: 'MALI',\n    mt: 'MALTA',\n    mh: 'ISLAS MARSHALL',\n    mq: 'MATINICA',\n    mr: 'MAURITANIA',\n    mu: 'MAURICIO',\n    yt: 'MAYOTTE',\n    mx: 'MÉXICO',\n    fm: 'MICRONESIA',\n    md: 'MOLDOVA',\n    mc: 'MÓNACO',\n    mn: 'MONGOLIA',\n    me: 'MONTENEGRO',\n    ms: 'MONTSERRAT',\n    ma: 'MARRUECOS',\n    mz: 'MOZAMBIQUE',\n    mm: 'MYANMAR',\n    na: 'NAMIBIA',\n    nr: 'NAURU',\n    np: 'NEPAL',\n    nl: 'PAÍSES BAJOS',\n    an: 'ANTILLAS NEERLANDESAS',\n    nc: 'NUEVA CALEDONIA',\n    nz: 'NUEVA ZELANDA',\n    ni: 'NICARAGUA',\n    ne: 'NÍGER',\n    ng: 'NIGERIA',\n    nu: 'NIUE',\n    nf: 'ISLAS NORKFOLK',\n    mp: 'ISLAS MARIANAS DEL NORTE',\n    no: 'NORUEGA',\n    om: 'OMÁN',\n    pk: 'PAKISTÁN',\n    pw: 'ISLAS PALAOS',\n    ps: 'PALESTINA',\n    pa: 'PANAMÁ',\n    pg: 'PAPÚA NUEVA GUINEA',\n    py: 'PARAGUAY',\n    pe: 'PERÚ',\n    ph: 'FILIPINAS',\n    pn: 'ISLAS PITCAIRN',\n    pl: 'POLONIA',\n    pt: 'PORTUGAL',\n    pr: 'PUERTO RICO',\n    qa: 'QATAR',\n    re: 'REUNIÓN',\n    ro: 'RUMANÍA',\n    ru: 'RUSIA',\n    rw: 'RUANDA',\n    sh: 'SANTA ELENA',\n    kn: 'SAN CRISTÓBAL Y NIEVES',\n    lc: 'SANTA LUCÍA',\n    pm: 'SAN PEDRO Y MIQUELÓN',\n    vc: 'SAN VICENTE Y LAS GRANADINAS',\n    ws: 'SAMOA',\n    bl: 'SAN BARTOLOMÉ',\n    sm: 'SAN MARINO',\n    st: 'SANTO TOMÉ Y PRÍNCIPE',\n    sa: 'ARABIA SAUDITA',\n    sn: 'SENEGAL',\n    cs: 'SERBIA Y MONTENEGRO',\n    rs: 'SERBIA',\n    sc: 'SEYCHELLES',\n    sl: 'SIERRA LEONA',\n    sg: 'SINGAPUR',\n    sx: 'SINT MAARTEN',\n    sk: 'ESLOVAQUIA',\n    si: 'ESLOVENIA',\n    sb: 'ISLAS SOLOMÓN',\n    so: 'SOMALIA',\n    za: 'SUDÁFRICA',\n    gs: 'GEORGIA DEL SUR E ISLAS SANDWICH DEL SUR',\n    es: 'ESPAÑA',\n    lk: 'SRI LANKA',\n    sd: 'SUDÁN',\n    ss: 'SUDÁN DEL SUR',\n    sr: 'SURINAM',\n    sj: 'ISLAS SVALBARD Y JAN MAYEN',\n    sz: 'SUAZILANDIA',\n    se: 'SUECIA',\n    ch: 'SUIZA',\n    sy: 'SIRIA',\n    tw: 'TAIWÁN',\n    tj: 'TAYIKISTÁN',\n    tz: 'TANZANIA',\n    th: 'TAILANDIA',\n    tl: 'TIMOR-LESTE',\n    tg: 'TOGO',\n    tk: 'TOKELAU',\n    to: 'TONGA',\n    tt: 'TRINIDAD Y TOBAGO',\n    tn: 'TÚNEZ',\n    tr: 'TURQUÍA',\n    tm: 'TURKMENISTÁN',\n    tc: 'ISLAS TURCAS Y CAICOS',\n    tv: 'TUVALU',\n    ug: 'UGANDA',\n    ua: 'UCRANIA',\n    ae: 'EMIRATOS ÁRABES UNIDOS',\n    gb: 'REINO UNIDO',\n    us: 'ESTADOS UNIDOS DE AMÉRICA',\n    um: 'ESTADOS UNIDOS ISLAS MINOR OUTLYING',\n    uy: 'URUGUAY',\n    uz: 'UZBEKISTÁN',\n    vu: 'VANUATU',\n    va: 'CIUDAD DEL VATICANO',\n    ve: 'VENEZUELA',\n    vn: 'VIETNAM',\n    vg: 'ISLAS VÍRGENES (INGLESAS)',\n    vi: 'ISLAS VÍRGENES (U.S.)',\n    wf: 'WALLIS Y FUTUNA',\n    eh: 'SAHARA OCCIDENTAL',\n    ye: 'YEMEN',\n    zm: 'ZAMBIA',\n    zw: 'ZIMBABUE '\n  }\n}"
-                }
-            ],
-            "stories/Input.stories.ts": [
+                    "type": "",
+                    "defaultValue": "new FormGroup({\n  phone: new FormControl(''),\n})"
+                },
                 {
                     "name": "Primary",
                     "ctype": "miscellaneous",
@@ -3928,7 +3928,19 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<NgxInternationalPhoneNumberInputComponent>",
-                    "defaultValue": "(args: NgxInternationalPhoneNumberInputComponent) => ({\n\tcomponent: NgxInternationalPhoneNumberInputComponent,\n  props: args,\n})"
+                    "defaultValue": "(args: NgxInternationalPhoneNumberInputComponent) => ({\n\tcomponent: NgxInternationalPhoneNumberInputComponent,\n    props: args,\n    form: formGroup\n})"
+                }
+            ],
+            "projects/ngx-international-phone-number-input/src/lib/country.service.ts": [
+                {
+                    "name": "LOCALES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/ngx-international-phone-number-input/src/lib/country.service.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  en: {\n    ax: 'AALAND ISLANDS',\n    af: 'AFGHANISTAN',\n    al: 'ALBANIA',\n    dz: 'ALGERIA',\n    as: 'AMERICAN SAMOA',\n    ad: 'ANDORRA',\n    ao: 'ANGOLA',\n    ai: 'ANGUILLA',\n    aq: 'ANTARCTICA',\n    ag: 'ANTIGUA AND BARBUDA',\n    ar: 'ARGENTINA',\n    am: 'ARMENIA',\n    aw: 'ARUBA',\n    au: 'AUSTRALIA',\n    at: 'AUSTRIA',\n    az: 'AZERBAIJAN',\n    bs: 'BAHAMAS',\n    bh: 'BAHRAIN',\n    bd: 'BANGLADESH',\n    bb: 'BARBADOS',\n    by: 'BELARUS',\n    be: 'BELGIUM',\n    bz: 'BELIZE',\n    bj: 'BENIN',\n    bm: 'BERMUDA',\n    bt: 'BHUTAN',\n    bo: 'BOLIVIA',\n    ba: 'BOSNIA AND HERZEGOWINA',\n    bw: 'BOTSWANA',\n    bv: 'BOUVET ISLAND',\n    br: 'BRAZIL',\n    io: 'BRITISH INDIAN OCEAN TERRITORY',\n    bn: 'BRUNEI DARUSSALAM',\n    bg: 'BULGARIA',\n    bf: 'BURKINA FASO',\n    bi: 'BURUNDI',\n    bq: 'CARIBBEAN NETHERLANDS',\n    kh: 'CAMBODIA',\n    cm: 'CAMEROON',\n    ca: 'CANADA',\n    cv: 'CAPE VERDE',\n    ky: 'CAYMAN ISLANDS',\n    cf: 'CENTRAL AFRICAN REPUBLIC',\n    td: 'CHAD',\n    cl: 'CHILE',\n    cn: 'CHINA',\n    cc: 'COCOS ISLANDS',\n    co: 'COLOMBIA',\n    km: 'COMOROS',\n    cd: 'CONGO',\n    cg: 'CONGO REPUBLIC',\n    ck: 'COOK ISLANDS',\n    cr: 'COSTA RICA',\n    ci: 'COTE DIVOIRE',\n    hr: 'CROATIA ',\n    cu: 'CUBA',\n    cw: 'CURACAO',\n    cy: 'CYPRUS',\n    cz: 'CZECH REPUBLIC',\n    dk: 'DENMARK',\n    dj: 'DJIBOUTI',\n    dm: 'DOMINICA',\n    do: 'DOMINICAN REPUBLIC',\n    ec: 'ECUADOR',\n    eg: 'EGYPT',\n    sv: 'EL SALVADOR',\n    gq: 'EQUATORIAL GUINEA',\n    er: 'ERITREA',\n    ee: 'ESTONIA',\n    et: 'ETHIOPIA',\n    fk: 'FALKLAND ISLANDS (MALVINAS)',\n    fo: 'FAROE ISLANDS',\n    fj: 'FIJI',\n    fi: 'FINLAND',\n    fr: 'FRANCE',\n    gf: 'FRENCH GUIANA',\n    pf: 'FRENCH POLYNESIA',\n    tf: 'FRENCH SOUTHERN TERRITORIES',\n    ga: 'GABON',\n    gm: 'GAMBIA',\n    ge: 'GEORGIA',\n    de: 'GERMANY',\n    gh: 'GHANA',\n    gi: 'GIBRALTAR',\n    gr: 'GREECE',\n    gl: 'GREENLAND',\n    gd: 'GRENADA',\n    gp: 'GUADELOUPE',\n    gu: 'GUAM',\n    gt: 'GUATEMALA',\n    gg: 'GUERNSEY',\n    gn: 'GUINEA',\n    gw: 'GUINEA-BISSAU',\n    gy: 'GUYANA',\n    ht: 'HAITI',\n    hm: 'HEARD AND MC DONALD ISLANDS',\n    hn: 'HONDURAS',\n    hk: 'HONG KONG',\n    hu: 'HUNGARY',\n    is: 'ICELAND',\n    in: 'INDIA',\n    id: 'INDONESIA',\n    ir: 'IRAN ',\n    iq: 'IRAQ',\n    ie: 'IRELAND',\n    im: 'ISLA DE MAN',\n    il: 'ISRAEL',\n    it: 'ITALY',\n    jm: 'JAMAICA',\n    jp: 'JAPAN',\n    je: 'JERSEY',\n    jo: 'JORDAN',\n    kz: 'KAZAKHSTAN',\n    ke: 'KENYA',\n    ki: 'KIRIBATI',\n    kp: 'KOREA NORTH ',\n    kr: 'KOREA SOUTH',\n    xk: 'KOSOVO',\n    kw: 'KUWAIT',\n    kg: 'KYRGYZSTAN',\n    la: 'LAO',\n    lv: 'LATVIA',\n    lb: 'LEBANON',\n    ls: 'LESOTHO',\n    lr: 'LIBERIA',\n    ly: 'LIBYAN ARAB JAMAHIRIYA',\n    li: 'LIECHTENSTEIN',\n    lt: 'LITHUANIA',\n    lu: 'LUXEMBOURG',\n    mo: 'MACAU',\n    mk: 'MACEDONIA',\n    mg: 'MADAGASCAR',\n    mw: 'MALAWI',\n    my: 'MALAYSIA',\n    mv: 'MALDIVES',\n    ml: 'MALI',\n    mt: 'MALTA',\n    mh: 'MARSHALL ISLANDS',\n    mq: 'MARTINIQUE',\n    mr: 'MAURITANIA',\n    mu: 'MAURITIUS',\n    yt: 'MAYOTTE',\n    mx: 'MEXICO',\n    fm: 'MICRONESIA',\n    md: 'MOLDOVA',\n    mc: 'MONACO',\n    mn: 'MONGOLIA',\n    me: 'MONTENEGRO',\n    ms: 'MONTSERRAT',\n    ma: 'MOROCCO',\n    mz: 'MOZAMBIQUE',\n    mm: 'MYANMAR',\n    na: 'NAMIBIA',\n    nr: 'NAURU',\n    np: 'NEPAL',\n    nl: 'NETHERLANDS',\n    an: 'NETHERLANDS ANTILLES',\n    nc: 'NEW CALEDONIA',\n    nz: 'NEW ZEALAND',\n    ni: 'NICARAGUA',\n    ne: 'NIGER',\n    ng: 'NIGERIA',\n    nu: 'NIUE',\n    nf: 'NORFOLK ISLAND',\n    mp: 'NORTHERN MARIANA ISLANDS',\n    no: 'NORWAY',\n    om: 'OMAN',\n    pk: 'PAKISTAN',\n    pw: 'PALAU',\n    ps: 'PALESTINA',\n    pa: 'PANAMA',\n    pg: 'PAPUA NEW GUINEA',\n    py: 'PARAGUAY',\n    pe: 'PERU',\n    ph: 'PHILIPPINES',\n    pn: 'PITCAIRN',\n    pl: 'POLAND',\n    pt: 'PORTUGAL',\n    pr: 'PUERTO RICO',\n    qa: 'QATAR',\n    re: 'REUNION',\n    ro: 'ROMANIA',\n    ru: 'RUSSIAN FEDERATION',\n    rw: 'RWANDA',\n    sh: 'SAINT HELENA',\n    kn: 'SAINT KITTS AND NEVIS',\n    lc: 'SAINT LUCIA',\n    pm: 'SAINT PIERRE AND MIQUELON',\n    vc: 'SAINT VINCENT AND THE GRENADINES',\n    ws: 'SAMOA',\n    bl: 'SAN BARTOLOMÉ',\n    sm: 'SAN MARINO',\n    st: 'SAO TOME AND PRINCIPE',\n    sa: 'SAUDI ARABIA',\n    sn: 'SENEGAL',\n    cs: 'SERBIA AND MONTENEGRO',\n    rs: 'SERBIA',\n    sc: 'SEYCHELLES',\n    sl: 'SIERRA LEONE',\n    sg: 'SINGAPORE',\n    sx: 'SINT MAARTEN',\n    sk: 'SLOVAKIA',\n    si: 'SLOVENIA',\n    sb: 'SOLOMON ISLANDS',\n    so: 'SOMALIA',\n    za: 'SOUTH AFRICA',\n    gs: 'SOUTH GEORGIA ISLANDS',\n    es: 'SPAIN',\n    lk: 'SRI LANKA',\n    sd: 'SUDAN',\n    ss: 'SOUTH SUDAN',\n    sr: 'SURINAME',\n    sj: 'SVALBARD AND JAN MAYEN ISLANDS',\n    sz: 'SWAZILAND',\n    se: 'SWEDEN',\n    ch: 'SWITZERLAND',\n    sy: 'SYRIAN ARAB REPUBLIC',\n    tw: 'TAIWAN',\n    tj: 'TAJIKISTAN',\n    tz: 'TANZANIA',\n    th: 'THAILAND',\n    tl: 'TIMOR-LESTE',\n    tg: 'TOGO',\n    tk: 'TOKELAU',\n    to: 'TONGA',\n    tt: 'TRINIDAD AND TOBAGO',\n    tn: 'TUNISIA',\n    tr: 'TURKEY',\n    tm: 'TURKMENISTAN',\n    tc: 'TURKS AND CAICOS ISLANDS',\n    tv: 'TUVALU',\n    ug: 'UGANDA',\n    ua: 'UKRAINE',\n    ae: 'UNITED ARAB EMIRATES',\n    gb: 'UNITED KINGDOM',\n    us: 'UNITED STATES',\n    um: 'UNITED STATES MINOR OUTLYING ISLANDS',\n    uy: 'URUGUAY',\n    uz: 'UZBEKISTAN',\n    vu: 'VANUATU',\n    va: 'VATICAN CITY STATE',\n    ve: 'VENEZUELA',\n    vn: 'VIET NAM',\n    vg: 'VIRGIN ISLANDS (BRITISH)',\n    vi: 'VIRGIN ISLANDS (U.S.)',\n    wf: 'WALLIS AND FUTUNA ISLANDS',\n    eh: 'WESTERN SAHARA',\n    ye: 'YEMEN',\n    zm: 'ZAMBIA',\n    zw: 'ZIMBABWE '\n  },\n  es: {\n    ax: 'ISLAS ÁLAND',\n    af: 'AFGHANISTÁN',\n    al: 'ALBANIA',\n    dz: 'ARGEL',\n    as: 'SAMOA AMERICANA',\n    ad: 'ANDORRA',\n    ao: 'ANGOLA',\n    ai: 'ANGUILA',\n    aq: 'ANTÁRTIDA',\n    ag: 'ANTIGUA Y BARBUDA',\n    ar: 'ARGENTINA',\n    am: 'ARMENIA',\n    aw: 'ARUBA',\n    au: 'AUSTRALIA',\n    at: 'AUSTRIA',\n    az: 'AZERBAIYÁN',\n    bs: 'BAHAMAS',\n    bh: 'BAHRÉIN',\n    bd: 'BANGLADESH',\n    bb: 'BARBADOS',\n    by: 'BELARÚS',\n    be: 'BÉLGICA',\n    bz: 'BELICE',\n    bj: 'BENIN',\n    bm: 'BERMUDAAS',\n    bt: 'BHUTÁN',\n    bo: 'BOLIVIA',\n    ba: 'BOSNIA Y HERZEGOVINA',\n    bw: 'BOTSUANA',\n    bv: 'ISLA BOUVET',\n    br: 'BRASIL',\n    io: 'TERRITORIO BRITÁNICO DEL OCÉANO ÍNDICO',\n    bn: 'BRUNÉI',\n    bg: 'BULGARIA',\n    bf: 'BURKINA FASO',\n    bi: 'BURUNDI',\n    bq: 'CARIBE PAÍSES BAJOS',\n    kh: 'CAMBOYA',\n    cm: 'CAMERÚN',\n    ca: 'CANADÁ',\n    cv: 'CABO VERDE',\n    ky: 'ISLAS CAIMÁN',\n    cf: 'REPÚBLICA CENTRO-AFRICANA',\n    td: 'CHAD',\n    cl: 'CHILE',\n    cn: 'CHINA',\n    cc: 'ISLAS COCOS',\n    co: 'COLOMBIA',\n    km: 'COMOROS',\n    cd: 'CONGO (ZAIRE)',\n    cg: 'CONGO',\n    ck: 'ISLAS COOK',\n    cr: 'COSTA RICA',\n    ci: 'COSTA DE MARFIL',\n    hr: 'CROACIA ',\n    cu: 'CUBA',\n    cw: 'CURAÇAO',\n    cy: 'CHIPRE',\n    cz: 'REPÚBLICA CHECA',\n    dk: 'DINAMARCA',\n    dj: 'YIBUTI',\n    dm: 'DOMÍNICA',\n    do: 'REPÚBLICA DOMINICANA',\n    ec: 'ECUADOR',\n    eg: 'EGIPTO',\n    sv: 'EL SALVADOR',\n    gq: 'GUINEA ECUATORIAL',\n    er: 'ERITREA',\n    ee: 'ESTONIA',\n    et: 'ETIOPÍA',\n    fk: 'ISLAS MALVINAS',\n    fo: 'ISLAS FAROE',\n    fj: 'FIJI',\n    fi: 'FINLANDIA',\n    fr: 'FRANCIA',\n    gf: 'GUIANA FRANCESA',\n    pf: 'POLYNESIA FRANCESA',\n    tf: 'TERRITORIOS AUSTRALES FRANCESES',\n    ga: 'GABÓN',\n    gm: 'GAMBIA',\n    ge: 'GEORGIA',\n    de: 'ALEMANIA',\n    gh: 'GHANA',\n    gi: 'GIBRALTAR',\n    gr: 'GREECE',\n    gl: 'GROENLANDIA',\n    gd: 'GRANADA',\n    gp: 'GUADALUPE',\n    gu: 'GUAM',\n    gt: 'GUATEMALA',\n    gg: 'GUERNSEY',\n    gn: 'GUINEA',\n    gw: 'GUINEA-BISSAU',\n    gy: 'GUYANA',\n    ht: 'HAITI',\n    hm: 'ISLAS HEARD Y MC DONALD',\n    hn: 'HONDURAS',\n    hk: 'HONG KONG',\n    hu: 'HUNGRÍA',\n    is: 'ISLANDIA',\n    in: 'INDIA',\n    id: 'INDONESIA',\n    ir: 'IRÁN',\n    iq: 'IRAK',\n    ie: 'IRLANDA',\n    im: 'ISLA DE MAN',\n    il: 'ISRAEL',\n    it: 'ITALIA',\n    jm: 'JAMAICA',\n    jp: 'JAPÓN',\n    je: 'JERSEY',\n    jo: 'JORDANIA',\n    kz: 'KAZAJSTÁN',\n    ke: 'KENIA',\n    ki: 'KIRIBATI',\n    kp: 'KOREA DEL NORTE',\n    kr: 'KOREA DEL SUR',\n    xk: 'KOSOVO',\n    kw: 'KUWAIT',\n    kg: 'KIRGUISTÁN',\n    la: 'LAOS',\n    lv: 'LETONIA',\n    lb: 'LÍBANO',\n    ls: 'LESOTHO',\n    lr: 'LIBERIA',\n    ly: 'LIBIA',\n    li: 'LIECHTENSTEIN',\n    lt: 'LITUANIA',\n    lu: 'LUXEMBURGO',\n    mo: 'MACAO',\n    mk: 'MACEDONIA',\n    mg: 'MADAGASCAR',\n    mw: 'MALAWI',\n    my: 'MALASIA',\n    mv: 'MALDIVAS',\n    ml: 'MALI',\n    mt: 'MALTA',\n    mh: 'ISLAS MARSHALL',\n    mq: 'MATINICA',\n    mr: 'MAURITANIA',\n    mu: 'MAURICIO',\n    yt: 'MAYOTTE',\n    mx: 'MÉXICO',\n    fm: 'MICRONESIA',\n    md: 'MOLDOVA',\n    mc: 'MÓNACO',\n    mn: 'MONGOLIA',\n    me: 'MONTENEGRO',\n    ms: 'MONTSERRAT',\n    ma: 'MARRUECOS',\n    mz: 'MOZAMBIQUE',\n    mm: 'MYANMAR',\n    na: 'NAMIBIA',\n    nr: 'NAURU',\n    np: 'NEPAL',\n    nl: 'PAÍSES BAJOS',\n    an: 'ANTILLAS NEERLANDESAS',\n    nc: 'NUEVA CALEDONIA',\n    nz: 'NUEVA ZELANDA',\n    ni: 'NICARAGUA',\n    ne: 'NÍGER',\n    ng: 'NIGERIA',\n    nu: 'NIUE',\n    nf: 'ISLAS NORKFOLK',\n    mp: 'ISLAS MARIANAS DEL NORTE',\n    no: 'NORUEGA',\n    om: 'OMÁN',\n    pk: 'PAKISTÁN',\n    pw: 'ISLAS PALAOS',\n    ps: 'PALESTINA',\n    pa: 'PANAMÁ',\n    pg: 'PAPÚA NUEVA GUINEA',\n    py: 'PARAGUAY',\n    pe: 'PERÚ',\n    ph: 'FILIPINAS',\n    pn: 'ISLAS PITCAIRN',\n    pl: 'POLONIA',\n    pt: 'PORTUGAL',\n    pr: 'PUERTO RICO',\n    qa: 'QATAR',\n    re: 'REUNIÓN',\n    ro: 'RUMANÍA',\n    ru: 'RUSIA',\n    rw: 'RUANDA',\n    sh: 'SANTA ELENA',\n    kn: 'SAN CRISTÓBAL Y NIEVES',\n    lc: 'SANTA LUCÍA',\n    pm: 'SAN PEDRO Y MIQUELÓN',\n    vc: 'SAN VICENTE Y LAS GRANADINAS',\n    ws: 'SAMOA',\n    bl: 'SAN BARTOLOMÉ',\n    sm: 'SAN MARINO',\n    st: 'SANTO TOMÉ Y PRÍNCIPE',\n    sa: 'ARABIA SAUDITA',\n    sn: 'SENEGAL',\n    cs: 'SERBIA Y MONTENEGRO',\n    rs: 'SERBIA',\n    sc: 'SEYCHELLES',\n    sl: 'SIERRA LEONA',\n    sg: 'SINGAPUR',\n    sx: 'SINT MAARTEN',\n    sk: 'ESLOVAQUIA',\n    si: 'ESLOVENIA',\n    sb: 'ISLAS SOLOMÓN',\n    so: 'SOMALIA',\n    za: 'SUDÁFRICA',\n    gs: 'GEORGIA DEL SUR E ISLAS SANDWICH DEL SUR',\n    es: 'ESPAÑA',\n    lk: 'SRI LANKA',\n    sd: 'SUDÁN',\n    ss: 'SUDÁN DEL SUR',\n    sr: 'SURINAM',\n    sj: 'ISLAS SVALBARD Y JAN MAYEN',\n    sz: 'SUAZILANDIA',\n    se: 'SUECIA',\n    ch: 'SUIZA',\n    sy: 'SIRIA',\n    tw: 'TAIWÁN',\n    tj: 'TAYIKISTÁN',\n    tz: 'TANZANIA',\n    th: 'TAILANDIA',\n    tl: 'TIMOR-LESTE',\n    tg: 'TOGO',\n    tk: 'TOKELAU',\n    to: 'TONGA',\n    tt: 'TRINIDAD Y TOBAGO',\n    tn: 'TÚNEZ',\n    tr: 'TURQUÍA',\n    tm: 'TURKMENISTÁN',\n    tc: 'ISLAS TURCAS Y CAICOS',\n    tv: 'TUVALU',\n    ug: 'UGANDA',\n    ua: 'UCRANIA',\n    ae: 'EMIRATOS ÁRABES UNIDOS',\n    gb: 'REINO UNIDO',\n    us: 'ESTADOS UNIDOS DE AMÉRICA',\n    um: 'ESTADOS UNIDOS ISLAS MINOR OUTLYING',\n    uy: 'URUGUAY',\n    uz: 'UZBEKISTÁN',\n    vu: 'VANUATU',\n    va: 'CIUDAD DEL VATICANO',\n    ve: 'VENEZUELA',\n    vn: 'VIETNAM',\n    vg: 'ISLAS VÍRGENES (INGLESAS)',\n    vi: 'ISLAS VÍRGENES (U.S.)',\n    wf: 'WALLIS Y FUTUNA',\n    eh: 'SAHARA OCCIDENTAL',\n    ye: 'YEMEN',\n    zm: 'ZAMBIA',\n    zw: 'ZIMBABUE '\n  }\n}"
                 }
             ]
         },
@@ -3993,7 +4005,7 @@
                 "linktype": "component",
                 "name": "NgxInternationalPhoneNumberInputComponent",
                 "coveragePercent": 30,
-                "coverageCount": "15/50",
+                "coverageCount": "15/49",
                 "status": "medium"
             },
             {
@@ -4051,6 +4063,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/Input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "formGroup",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

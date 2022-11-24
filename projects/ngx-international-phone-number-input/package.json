@@ -1,6 +1,6 @@
 {
-  "name": "ngx-international-phone-number-input",
-  "version": "0.0.13",
+  "name": "ngx-international-phone-number-input-1",
+  "version": "0.0.15",
   "peerDependencies": {
     "@angular/common": "^14.2.0",
     "@angular/core": "^14.2.0",
